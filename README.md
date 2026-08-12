@@ -10,8 +10,8 @@ I build robust AI-agent infrastructure and specialized SaaS products to digitize
 - **[NayaCloud](https://nayacloud.com)**: Dubai-based AI product studio.
 
 ## Tech Stack
-- **Cloud & DevOps:** GCP (Vertex AI, Cloud Run, BigQuery), AWS, Docker.
-- **AI & Automation:** OpenClaw Orchestration, Gemini, Claude, Kimi, Whisper.
+- **Cloud & DevOps:** GCP (Cloud AI, Cloud Run, BigQuery), AWS, Docker.
+- **AI & Automation:** OpenClaw Orchestration, Multimodal AI, Claude, Kimi, Whisper.
 - **Backend:** Node.js, Fastify, Python, Laravel, PostgreSQL, MySQL.
 - **Frontend:** React, Next.js, TailwindCSS.
 
