@@ -3,207 +3,539 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Osama Amin | Lead AI & Cloud Architect</title>
+    <title>Muhammad Osama Amin | AI Solutions Architect & Cloud Platform Engineer</title>
+    <meta name="description" content="AI Solutions Architect & Cloud Platform Engineer with 6 years building production platforms across the Gulf, UK, US, and Africa. 150+ cloud deployments on Azure, AWS, and GCP.">
+    
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons & Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
                     colors: {
-                        navy: '#0f172a',
-                        card: '#1e293b',
-                        accent: '#8b5cf6',
-                        sarkit: '#10b981'
+                        bg: '#090d16',
+                        surface: '#0f172a',
+                        surfaceBorder: '#1e293b',
+                        surfaceHover: '#1e293b',
+                        accent: '#38bdf8',
+                        accentGlow: 'rgba(56, 189, 248, 0.15)',
+                        emeraldAccent: '#10b981',
+                        violetAccent: '#818cf8',
                     }
                 }
             }
         }
     </script>
+    
     <style>
-        body { background-color: #0f172a; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-        .gradient-text { background: linear-gradient(to right, #8b5cf6, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        body {
+            background-color: #090d16;
+            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.04) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.04) 0px, transparent 50%);
+        }
+        
+        .grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-panel-hover:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 12px 30px -4px rgba(56, 189, 248, 0.12);
+        }
+
+        .badge-subtle {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Pulse Dot */
+        .pulse-dot {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+        }
+        @keyframes pulse {
+            to {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+            }
+        }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
-    <!-- Hero Section -->
-    <header class="py-20 px-6 max-w-5xl mx-auto w-full">
-        <div class="animate-fade-in-up">
-            <div class="flex flex-col md:flex-row gap-8 items-start">
-                <div class="flex-1">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Muhammad <span class="gradient-text">Osama Amin</span></h1>
-                    <h2 class="text-2xl text-accent font-semibold mb-6">Lead Cloud & AI Architect ☁️ | Technical Founder 🚀 | 150+ Enterprise Deployments ⚙️</h2>
-                    
-                    <div class="text-lg text-slate-400 mb-8 max-w-3xl leading-relaxed space-y-4">
-                        <p>I build, break, and scale zero-to-one infrastructure. With 6+ years of dedicated technical experience, I've delivered 150+ cloud architectures across Azure, AWS, and GCP for global enterprises.</p>
-                        <p>Currently leading <strong>VM Nebula (Pvt.) Ltd.</strong> as Founder & Chief Architect—a parent product company building AI agent infrastructure and zero-friction retail software for emerging markets.</p>
-                        
-                    </div>
+<body class="antialiased min-h-screen flex flex-col relative grid-pattern selection:bg-sky-500/30 selection:text-sky-200">
 
-                    <div class="flex gap-4 mb-10">
-                        <a href="mailto:osamaaminemail@gmail.com" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors"><i class="fas fa-envelope mr-2"></i> Contact Me</a>
-                        <a href="https://www.linkedin.com/in/muhammad-osama-amin/" target="_blank" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-medium transition-colors border border-slate-700"><i class="fab fa-linkedin mr-2"></i> LinkedIn</a>
-                        <a href="https://github.com/vmnebula" target="_blank" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 rounded-lg font-medium transition-colors border border-slate-700"><i class="fab fa-github mr-2"></i> GitHub</a>
-                    </div>
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-sky-500 to-indigo-500 flex items-center justify-center font-bold text-white shadow-lg shadow-sky-500/20 group-hover:scale-105 transition-transform">
+                    OA
                 </div>
-            </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-slate-100 text-sm tracking-tight group-hover:text-sky-400 transition-colors">Muhammad Osama Amin</span>
+                    <span class="text-[11px] text-slate-400 mono">AI & Cloud Solutions Architect</span>
+                </div>
+            </a>
             
-            <div class="flex flex-wrap items-center gap-6 text-slate-400 bg-card/50 p-4 rounded-xl border border-slate-800">
-                <div class="flex items-center gap-2"><i class="fab fa-google text-blue-400"></i> Google Workspace Marketplace Partner</div>
-                <div class="flex items-center gap-2"><i class="fas fa-rocket text-red-400"></i> Orbit Accelerator Alumni</div>
-                <div class="flex items-center gap-2"><i class="fas fa-gem text-purple-400"></i> Misk Accelerator</div>
-                <div class="flex items-center gap-2"><i class="fas fa-server text-yellow-500"></i> Aviatrix Network Engineer</div>
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+                <a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-sky-400 transition-colors">Selected Projects</a>
+                <a href="#competencies" class="hover:text-sky-400 transition-colors">Competencies</a>
+                <a href="#recognition" class="hover:text-sky-400 transition-colors">Recognition</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="Muhammad_Osama_Amin_CV_Tech.pdf" download class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-400 hover:text-sky-300 text-xs font-semibold tracking-wide transition-all shadow-sm">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                    <span>Download CV</span>
+                </a>
+                <a href="https://www.linkedin.com/in/muhammad-osama-amin/" target="_blank" rel="noopener" class="p-2 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-white transition-colors" title="LinkedIn">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                </a>
+                <a href="https://github.com/Vmnebula" target="_blank" rel="noopener" class="p-2 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 text-slate-300 hover:text-white transition-colors" title="GitHub">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                </a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Selected Products & Open Source -->
-    <section class="py-16 px-6 bg-slate-900 border-y border-slate-800 w-full">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold mb-10"><i class="fas fa-fire mr-3 text-orange-500"></i>VM Nebula Product Ecosystem</h2>
-            
+    <!-- Main Container -->
+    <main class="flex-1 max-w-6xl mx-auto px-6 py-12 md:py-16 space-y-16">
+
+        <!-- Hero Section -->
+        <section class="space-y-6 pt-4">
+            <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mono">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+                <span>Open to Relocation & Roles: KSA | UAE | Global (Remote)</span>
+            </div>
+
+            <div class="space-y-4 max-w-4xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    Architecting Production <br class="hidden sm:inline">
+                    <span class="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI & Cloud Platforms.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 font-normal leading-relaxed">
+                    AI and Cloud Solutions Architect with <strong class="text-white font-semibold">6 years</strong> designing and scaling multi-tenant platforms across the Gulf (Saudi Arabia, UAE), UK, US, and Africa.
+                </p>
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed">
+                    Proven track record delivering <strong class="text-slate-200">150+ production cloud architectures</strong> on Azure, AWS, and GCP. Deep expertise in autonomous LLM orchestration, zero-trust infrastructure, and FinOps (reduced infrastructure costs by <strong class="text-sky-400">87%</strong> on production re-platforming).
+                </p>
+            </div>
+
+            <!-- Key Metrics Strip -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
+                <div class="glass-panel p-4 rounded-xl border border-slate-800/80">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-sky-400 mono">6+ Years</div>
+                    <div class="text-xs text-slate-400 mt-1">Production Experience</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800/80">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400 mono">150+</div>
+                    <div class="text-xs text-slate-400 mt-1">Cloud Deployments</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800/80">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mono">87% Cost Cut</div>
+                    <div class="text-xs text-slate-400 mt-1">FinOps Re-platforming</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800/80">
+                    <div class="text-2xl sm:text-3xl font-extrabold text-purple-400 mono">4.97 / 5.0</div>
+                    <div class="text-xs text-slate-400 mt-1">100+ Global Engagements</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Projects & Open Source (Highlighted Top Tier) -->
+        <section id="projects" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-sky-400"></i>
+                        <span>Featured Open Source & Live Showcases</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">Production autonomous agents, FinOps tooling, and live platforms with verified codebases.</p>
+                </div>
+                <a href="https://github.com/Vmnebula?tab=repositories" target="_blank" rel="noopener" class="text-xs text-sky-400 hover:text-sky-300 inline-flex items-center gap-1 font-medium mono">
+                    <span>View all repositories</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Bulk AI Studio -->
-                <div class="glass-card rounded-2xl p-8 hover:border-blue-400 transition-colors border-2 border-blue-500/30">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold text-slate-100">➡️ Bulk AI Studio <span class="text-sm font-normal px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full ml-2">Google Approved</span></h3>
-                        <i class="fab fa-google text-2xl text-blue-400"></i>
+                <!-- Project 1: NebulaSEO -->
+                <div class="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between space-y-5 border-slate-800 relative group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold mono">
+                                <i data-lucide="git-pull-request" class="w-3 h-3"></i>
+                                GNU GPLv3
+                            </span>
+                            <a href="https://github.com/Vmnebula/NebulaSeo" target="_blank" rel="noopener" class="text-slate-400 hover:text-white transition-colors">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-sky-300 transition-colors">
+                            NebulaSEO: Autonomous AI SEO Agent
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Autonomous Gemini 3 Pro agent with <strong class="text-white">37 function-calling tools</strong> that audits Core Web Vitals, queries Search Console and GA4 via BigQuery, and autonomously creates GitHub PRs to fix schemas, meta tags, and headings with zero human intervention.
+                        </p>
                     </div>
-                    <p class="text-slate-300 font-medium mb-3">Google Workspace Marketplace Certified Application.</p>
-                    <p class="text-slate-400 mb-4 text-sm">Officially verified and published on the Google Workspace Marketplace. Enables automated bulk AI processing, content generation, and LLM workflows directly within Google Workspace.</p>
-                    <a href="https://gsuite.google.com/marketplace/app/foo/323643388682" target="_blank" class="text-blue-400 hover:text-blue-300 font-medium text-sm">View on Google Marketplace &rarr;</a>
+                    
+                    <div class="space-y-3 pt-2">
+                        <div class="flex flex-wrap gap-1.5 text-xs">
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">FastAPI</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">Next.js 14</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">Gemini 3 Pro</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">Cloud Run</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">BigQuery</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">Clerk Auth</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                            <span class="text-xs text-slate-400 mono">Automated PRs & GSC API</span>
+                            <a href="https://github.com/Vmnebula/NebulaSeo" target="_blank" rel="noopener" class="text-xs font-medium text-sky-400 hover:text-sky-300 inline-flex items-center gap-1">
+                                <span>Inspect Repo</span>
+                                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Sarkit -->
-                <div class="glass-card rounded-2xl p-8 hover:border-sarkit transition-colors">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold text-slate-100">➡️ Sarkit <span class="text-sm font-normal px-3 py-1 bg-sarkit/20 text-sarkit rounded-full ml-2">Live Pilot</span></h3>
-                        <i class="fab fa-whatsapp text-2xl text-sarkit"></i>
+                <!-- Project 2: Substacker -->
+                <div class="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col justify-between space-y-5 border-slate-800 relative group">
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-semibold mono">
+                                <i data-lucide="radio" class="w-3 h-3"></i>
+                                Live Platform & MIT
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <a href="https://substacker.vmnebula.com" target="_blank" rel="noopener" class="text-slate-400 hover:text-white transition-colors" title="Live Website">
+                                    <i data-lucide="globe" class="w-5 h-5"></i>
+                                </a>
+                                <a href="https://github.com/Vmnebula/substacker" target="_blank" rel="noopener" class="text-slate-400 hover:text-white transition-colors" title="GitHub Repo">
+                                    <i data-lucide="github" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-300 transition-colors">
+                            Substacker: AI Cost Attribution Platform
+                        </h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            FinOps platform attributing multi-tenant LLM spend across OpenAI, Anthropic, Gemini, and Azure. Built with hashed API key auth, WebSockets live streaming, strict budget enforcement, anomaly detection, and a published Python SDK.
+                        </p>
                     </div>
-                    <p class="text-slate-300 font-medium mb-3">Pakistan's first WhatsApp-native Retail Operating System.</p>
-                    <p class="text-slate-400 mb-4 text-sm">Engineered an end-to-end Voice-to-Ledger pipeline. Replaces complex POS apps with zero-UI voice commands. Powered by multimodal LLMs  parsing Roman Urdu/Pashto directly to a relational ledger via secure API webhooks.</p>
-                    <a href="https://sarkit.vmnebula.com" target="_blank" class="text-sarkit hover:text-green-400 font-medium text-sm">sarkit.vmnebula.com &rarr;</a>
-                </div>
 
-                <!-- VM Nebula -->
-                <div class="glass-card rounded-2xl p-8 hover:border-accent transition-colors">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold text-slate-100">➡️ VM Nebula Cloud</h3>
-                        <i class="fas fa-cloud text-2xl text-accent"></i>
+                    <div class="space-y-3 pt-2">
+                        <div class="flex flex-wrap gap-1.5 text-xs">
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">FastAPI</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">Python SDK</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">Supabase</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">WebSockets</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">FinOps</span>
+                            <span class="badge-subtle px-2.5 py-0.5 rounded-md mono">Nginx / SSL</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                            <span class="text-xs text-slate-400 mono">Multi-Provider FinOps</span>
+                            <a href="https://substacker.vmnebula.com" target="_blank" rel="noopener" class="text-xs font-medium text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1">
+                                <span>Launch Live App</span>
+                                <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
                     </div>
-                    <p class="text-slate-300 font-medium mb-3">The Cloud Execution Platform for AI Agents.</p>
-                    <p class="text-slate-400 mb-4 text-sm">Architected a cloud execution platform abstracting DevOps overhead to deploy single-tenant agentic workflows (OpenClaw, n8n, Flowise). Re-platformed the runtime across AWS ECS Fargate and GCP, cutting per-agent COGS by over 85%.</p>
-                    <a href="https://vmnebula.com" target="_blank" class="text-accent hover:text-purple-400 font-medium text-sm">vmnebula.com &rarr;</a>
-                </div>
-
-                <!-- Scope Shrinker -->
-                <div class="glass-card rounded-2xl p-8 hover:border-purple-400 transition-colors">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold text-slate-100">➡️ Scope Shrinker</h3>
-                        <i class="fas fa-microphone text-2xl text-purple-400"></i>
-                    </div>
-                    <p class="text-slate-300 font-medium mb-3">Voice-Native AI Project Manager.</p>
-                    <p class="text-slate-400 mb-4 text-sm">Built on the Real-time Audio API with bidirectional WebSocket audio and automated PRD generation for real-time project scoping (Google Cloud Next '26 Challenge).</p>
-                </div>
-
-                <!-- Mechanic AI -->
-                <div class="glass-card rounded-2xl p-8 hover:border-yellow-500 transition-colors">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold text-slate-100">➡️ Mechanic AI</h3>
-                        <i class="fas fa-shield-alt text-2xl text-yellow-500"></i>
-                    </div>
-                    <p class="text-slate-300 font-medium mb-3">Self-Healing DevSecOps Agent.</p>
-                    <p class="text-slate-400 mb-4 text-sm">Monitors CI/CD pipelines and security logs to automatically patch dependency vulnerabilities (CVEs), fix broken imports, and submit clean GitHub Pull Requests.</p>
-                </div>
-
-                <!-- Mizaan AI -->
-                <div class="glass-card rounded-2xl p-8 hover:border-emerald-400 transition-colors">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-2xl font-bold text-slate-100">➡️ Mizaan AI</h3>
-                        <i class="fas fa-balance-scale text-2xl text-emerald-400"></i>
-                    </div>
-                    <p class="text-slate-300 font-medium mb-3">Sharia Compliance Validation Engine.</p>
-                    <p class="text-slate-400 mb-4 text-sm">Designed for Islamic fintech compliance, validating transaction structures against Murabaha and Mudarabah principles for Middle Eastern markets.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Experience Timeline -->
-    <section class="py-16 px-6 max-w-5xl mx-auto w-full">
-        <h2 class="text-3xl font-bold mb-10"><i class="fas fa-briefcase mr-3 text-accent"></i>Professional Experience</h2>
-        
-        <div class="space-y-6">
-            <!-- VM Nebula -->
-            <div class="glass-card rounded-2xl p-6 border-l-4 border-l-accent">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-100">Founder & Chief Architect</h3>
-                        <h4 class="text-md text-accent font-medium mt-1">VM Nebula (Pvt.) Ltd. (Islamabad, PK)</h4>
-                    </div>
-                    <span class="text-slate-400 text-sm mt-2 md:mt-0 bg-slate-800 px-3 py-1 rounded-full">Aug 2024 - Present</span>
+            <!-- Additional Applied AI Showcases -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                    <div class="text-xs font-semibold text-sky-400 mono uppercase tracking-wider mb-1">Retail OS</div>
+                    <div class="font-bold text-white text-base">Sarkit (سارکٹ)</div>
+                    <p class="text-xs text-slate-300 mt-1">WhatsApp-native retail OS with Urdu/Pashto voice-to-ledger intent parsing on Vertex AI.</p>
                 </div>
-                <ul class="list-disc list-inside text-slate-400 text-sm space-y-1 mt-2">
-                    <li>Founder and Chief Architect of VM Nebula, a parent product company and software studio building AI infrastructure and emerging-market SaaS.</li>
-                    <li>Built and published <strong>Bulk AI Studio</strong> on the official Google Workspace Marketplace.</li>
-                    <li>Architected multi-tenant AI execution platform on AWS ECS Fargate & GCP with zero-trust networking and multi-provider fallback.</li>
-                    <li>Reduced per-agent infrastructure cost by ~87% through containerized cloud & database re-platforming.</li>
-                    <li>Graduated Orbit Startup Accelerator; incubated at NIC Peshawar.</li>
-                </ul>
-            </div>
-
-            <!-- Amin Technologies -->
-            <div class="glass-card rounded-2xl p-6">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-100">Cloud Operations Lead / Cloud Engineer</h3>
-                        <h4 class="text-md text-blue-400 font-medium mt-1">Amin Technologies Limited (United Kingdom)</h4>
-                    </div>
-                    <span class="text-slate-400 text-sm mt-2 md:mt-0">Aug 2022 – Jun 2025</span>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                    <div class="text-xs font-semibold text-indigo-400 mono uppercase tracking-wider mb-1">Google Certified</div>
+                    <div class="font-bold text-white text-base">Bulk AI Studio</div>
+                    <p class="text-xs text-slate-300 mt-1">Certified Google Workspace Marketplace application with enterprise OAuth scopes.</p>
                 </div>
-                <ul class="list-disc list-inside text-slate-400 text-sm space-y-1 mt-2">
-                    <li>Led cloud operations for a UK-registered managed services provider serving accounts across UK, Gulf, and Africa.</li>
-                    <li>Delivered 150+ enterprise cloud deployments on Azure, AWS, and GCP (HIPAA-compliant hosting, Azure Virtual Desktop).</li>
-                    <li>Built high-performance computing (HPC) environments (+30% throughput) and administered Active Directory environments.</li>
-                </ul>
-            </div>
-
-            <!-- AudITech -->
-            <div class="glass-card rounded-2xl p-6">
-                <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
-                    <div>
-                        <h3 class="text-xl font-bold text-slate-100">Web Application Developer</h3>
-                        <h4 class="text-md text-blue-400 font-medium mt-1">AudITech</h4>
-                    </div>
-                    <span class="text-slate-400 text-sm mt-2 md:mt-0">Jan 2020 – Jul 2022</span>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800">
+                    <div class="text-xs font-semibold text-purple-400 mono uppercase tracking-wider mb-1">Voice AI TPM</div>
+                    <div class="font-bold text-white text-base">Scope Shrinker</div>
+                    <p class="text-xs text-slate-300 mt-1">Voice-native AI project manager built on bidirectional Gemini Live WebSockets API.</p>
                 </div>
-                <p class="text-slate-400 text-sm mt-2">Developed enterprise e-commerce and business web platforms in PHP (Laravel), Node.js, and WordPress for global clients.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Tech Stack -->
-    <section class="py-16 px-6 bg-slate-900 border-t border-slate-800 w-full flex-grow">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-bold mb-10"><i class="fas fa-layer-group mr-3 text-accent"></i>Top Skills</h2>
-            <div class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">Cloud Architecture (AWS/GCP/Azure)</span>
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">LLM Orchestration (LangChain/RAG)</span>
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">DevOps & CI/CD</span>
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">Zero-Trust Security</span>
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">Node.js / Python / React Native</span>
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">PostgreSQL / Redis / Supabase</span>
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">FinOps (Cost Optimization)</span>
-                <span class="px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-200">Product Studio Management (0 → 1)</span>
+        <!-- Work Experience Timeline -->
+        <section id="experience" class="space-y-6">
+            <div class="border-b border-slate-800 pb-4">
+                <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+                    <i data-lucide="briefcase" class="w-6 h-6 text-sky-400"></i>
+                    <span>Professional Work Experience</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Track record of building enterprise cloud systems, leading operations, and scaling AI platforms.</p>
             </div>
-        </div>
-    </section>
+
+            <div class="space-y-6">
+                <!-- Role 1: VM Nebula -->
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border-slate-800 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Founder & Chief Architect <span class="text-sm font-normal text-slate-400">(Advisory from Aug 2026)</span></h3>
+                            <div class="text-sky-400 font-medium text-sm">VM Nebula (Pvt.) Ltd. • Islamabad, PK (Remote)</div>
+                        </div>
+                        <div class="text-xs font-semibold text-slate-400 mono bg-slate-800/60 px-3 py-1 rounded-full w-fit">
+                            Aug 2024 – Aug 2026
+                        </div>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed list-disc list-outside pl-4">
+                        <li>Ran a cloud and applied AI delivery business serving enterprise and growth accounts across Saudi Arabia, UAE, Pakistan, and Madagascar; led engineering across infrastructure, DevOps, and delivery.</li>
+                        <li>Owned DevOps, IaC, and FinOps across AWS, GCP, and Azure at an enterprise security and compliance bar, cutting client compute spend by <strong class="text-white">46%</strong>.</li>
+                        <li><strong class="text-sky-400">Key Result:</strong> Architected multi-tenant cloud execution platform and re-platformed production runtime (ECS Fargate to containerised GCE, DynamoDB to Supabase, ECR to Artifact Registry), reducing per-unit infrastructure cost by <strong class="text-white">~87%</strong>.</li>
+                        <li>Delivered voice-to-ledger pipeline converting spoken Urdu and Pashto into structured records via Fastify webhooks, Laravel on GCE, and Gemini Flash on Vertex AI.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 2: Amin Technologies UK -->
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border-slate-800 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Cloud Operations Lead & Cloud Engineer</h3>
+                            <div class="text-indigo-400 font-medium text-sm">Amin Technologies Limited • London, United Kingdom (Remote)</div>
+                        </div>
+                        <div class="text-xs font-semibold text-slate-400 mono bg-slate-800/60 px-3 py-1 rounded-full w-fit">
+                            Aug 2022 – Jun 2025
+                        </div>
+                    </div>
+                    <ul class="space-y-2.5 text-sm text-slate-300 leading-relaxed list-disc list-outside pl-4">
+                        <li>Led cloud operations for a UK-registered MSP serving enterprise and SME accounts; owned scoping, architecture, implementation, and ongoing SLA support.</li>
+                        <li><strong class="text-indigo-300">Key Result:</strong> Architected secure Azure Virtual Desktop (AVD) estate in the Gulf region (UAE North) with unified monitoring, private Git, and internal chat; scaled multi-session FSLogix and RDS profile infrastructure.</li>
+                        <li>Delivered enterprise deployments across Azure, AWS, and GCP covering production workloads, HPC environments (<strong class="text-white">+30% throughput</strong>), HIPAA-compliant hosting, and Active Directory governance for 50+ users.</li>
+                    </ul>
+                </div>
+
+                <!-- Role 3: Independent Consultant -->
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border-slate-800 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Independent Cloud & Infrastructure Consultant</h3>
+                            <div class="text-emerald-400 font-medium text-sm">Freelance / Contract Delivery • Global (Remote)</div>
+                        </div>
+                        <div class="text-xs font-semibold text-slate-400 mono bg-slate-800/60 px-3 py-1 rounded-full w-fit">
+                            Nov 2020 – Present
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Executed <strong class="text-white">100+ paid infrastructure engagements</strong> for clients across the Gulf (KSA, UAE), US, UK, and Europe at a verified <strong class="text-emerald-400">4.97 / 5.0 rating</strong> with repeat engagements from 12+ enterprise clients. Work spans Azure Virtual Desktop estates with VPN gateways, Windows RDS with FSLogix profile containers, AWS/GCP production architectures, and disaster recovery strategies.
+                    </p>
+                </div>
+
+                <!-- Role 4: HDPO -->
+                <div class="glass-panel p-6 sm:p-8 rounded-2xl border-slate-800 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Director, IT & Digital <span class="text-sm font-normal text-slate-400">(Part-time)</span></h3>
+                            <div class="text-purple-400 font-medium text-sm">Human Development & Peace Organization (HDPO) • Islamabad, PK</div>
+                        </div>
+                        <div class="text-xs font-semibold text-slate-400 mono bg-slate-800/60 px-3 py-1 rounded-full w-fit">
+                            Apr 2023 – Present
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        Own IT systems, tooling, vendor selection, and governance; led the digital transformation programme that raised overall organizational efficiency by <strong class="text-white">35%</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Competencies Grid -->
+        <section id="competencies" class="space-y-6">
+            <div class="border-b border-slate-800 pb-4">
+                <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+                    <i data-lucide="layers" class="w-6 h-6 text-sky-400"></i>
+                    <span>Core Technical Competencies</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Categorized breakdown of architecture, engineering, and platform capabilities.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Applied AI -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-4">
+                    <div class="flex items-center gap-2 text-sky-400">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                        <h3 class="font-bold text-white">Applied AI & LLM Ops</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-300 mono leading-relaxed">
+                        <li>• Multi-agent loops & function calling</li>
+                        <li>• RAG architectures & vector databases</li>
+                        <li>• Gemini 3 Pro, Claude, Vertex AI</li>
+                        <li>• AWS Bedrock & open model serving</li>
+                        <li>• Voice/speech-to-structured pipelines</li>
+                        <li>• Structured output enforcement (JSON)</li>
+                    </ul>
+                </div>
+
+                <!-- Cloud & Infrastructure -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-4">
+                    <div class="flex items-center gap-2 text-indigo-400">
+                        <i data-lucide="cloud" class="w-5 h-5"></i>
+                        <h3 class="font-bold text-white">Cloud Architecture & FinOps</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-300 mono leading-relaxed">
+                        <li>• Azure (AVD, Entra ID, FSLogix, RDS)</li>
+                        <li>• AWS (EC2, ECS Fargate, ECR, ALB)</li>
+                        <li>• GCP (GCE, Cloud Run, BigQuery)</li>
+                        <li>• Zero-trust security & VPN gateways</li>
+                        <li>• Docker, Docker Compose, CI/CD</li>
+                        <li>• FinOps & compute cost optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Engineering & Backend -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-4">
+                    <div class="flex items-center gap-2 text-emerald-400">
+                        <i data-lucide="code" class="w-5 h-5"></i>
+                        <h3 class="font-bold text-white">Software & Platform Stack</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs text-slate-300 mono leading-relaxed">
+                        <li>• Python (FastAPI, Uvicorn, Pytest)</li>
+                        <li>• TypeScript, React, Next.js 14</li>
+                        <li>• Node.js & Fastify Webhooks</li>
+                        <li>• PHP & Laravel</li>
+                        <li>• PostgreSQL, MySQL, SQLite</li>
+                        <li>• Redis & Supabase</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recognition, Education & Credentials -->
+        <section id="recognition" class="space-y-6">
+            <div class="border-b border-slate-800 pb-4">
+                <h2 class="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
+                    <i data-lucide="award" class="w-6 h-6 text-sky-400"></i>
+                    <span>Recognition, Accelerators & Education</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-400 mt-1">Verified industry credentials, accelerator alumni status, and academic foundation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Education & Certifications -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="graduation-cap" class="w-5 h-5 text-sky-400"></i>
+                        <span>Education & Certifications</span>
+                    </h3>
+                    <div class="space-y-3 text-sm text-slate-300">
+                        <div>
+                            <div class="font-semibold text-white">B.S., Computer Software Engineering (2023)</div>
+                            <div class="text-slate-400 text-xs">University of Engineering & Technology (UET), Peshawar</div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-800 space-y-1.5">
+                            <div class="text-xs text-slate-400 uppercase mono font-semibold">Certifications</div>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="badge-subtle px-3 py-1 rounded-md mono text-sky-300">Aviatrix Certified Network Engineer</span>
+                                <span class="badge-subtle px-3 py-1 rounded-md mono text-indigo-300">DS4KP Data Science & ML</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accelerators & Media -->
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="flame" class="w-5 h-5 text-indigo-400"></i>
+                        <span>Accelerators & Media</span>
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-outside pl-4">
+                        <li>Selected for <strong class="text-white">Misk Accelerator (Saudi Arabia)</strong> & <strong class="text-white">Orbit Accelerator</strong>.</li>
+                        <li>Incubated at <strong class="text-white">NIC Peshawar</strong>.</li>
+                        <li>Work featured on <strong class="text-white">National TV</strong> and <strong class="text-white">BBC Pashto</strong>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA & Contact Section -->
+        <section class="glass-panel p-8 sm:p-12 rounded-3xl border-sky-500/20 bg-gradient-to-b from-slate-900 to-sky-950/20 text-center space-y-6">
+            <div class="max-w-2xl mx-auto space-y-3">
+                <h2 class="text-3xl font-extrabold text-white tracking-tight">Ready to Discuss Production AI & Cloud Roles</h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Looking for full-time opportunities as an <strong class="text-white">AI Solutions Architect</strong>, <strong class="text-white">Cloud Platform Engineer</strong>, or <strong class="text-white">Applied AI Delivery Lead</strong> across Saudi Arabia, UAE, or globally remote.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a href="mailto:osamaaminemail@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm shadow-lg shadow-sky-500/25 transition-all">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    <span>osamaaminemail@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/muhammad-osama-amin/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm transition-all">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    <span>Connect on LinkedIn</span>
+                </a>
+                <a href="Muhammad_Osama_Amin_CV_Tech.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm transition-all">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Download CV (PDF)</span>
+                </a>
+            </div>
+
+            <div class="text-xs text-slate-500 mono pt-4">
+                Phone / WhatsApp: +92 310 5035067 • Islamabad, PK • Open to Relocation
+            </div>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer class="py-8 text-center text-slate-500 border-t border-slate-800">
-        <p>&copy; 2026 Muhammad Osama Amin</p>
+    <footer class="border-t border-slate-800/80 py-8 px-6 text-center text-xs text-slate-500 space-y-2">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                © 2026 Muhammad Osama Amin. All rights reserved.
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="https://github.com/Vmnebula" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/muhammad-osama-amin/" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://x.com/AminTechnical" target="_blank" rel="noopener" class="hover:text-white transition-colors">X (Twitter)</a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
