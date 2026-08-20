@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad OS | 3D Mission Control & AI Command Deck</title>
-    <meta name="description" content="Interactive 3D AI Solutions Architect & Cloud Platform Engineering Command Deck. 150+ production deployments, FinOps telemetry, and autonomous agent loops.">
+    <title>Muhammad OS | AI & Cloud 3D Command Deck</title>
+    <meta name="description" content="Interactive 3D Virtual Command Center. 150+ cloud deployments, FinOps telemetry, and autonomous agent loops.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,13 +23,18 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        hud: {
-                            bg: '#040711',
-                            card: '#0B1120',
-                            border: '#1E293B',
-                            accent: '#10B981',
+                        space: {
+                            950: '#030712',
+                            900: '#070D1E',
+                            800: '#0D152D',
+                            700: '#172347',
+                            border: '#1F2E58'
+                        },
+                        cyber: {
+                            emerald: '#10B981',
                             cyan: '#06B6D4',
-                            purple: '#8B5CF6',
+                            purple: '#A855F7',
+                            pink: '#EC4899',
                             amber: '#F59E0B'
                         }
                     }
@@ -37,7 +42,7 @@
             }
         }
     </script>
-    <!-- Three.js + OrbitControls -->
+    <!-- Three.js + OrbitControls + TWEEN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>
@@ -45,27 +50,54 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         .mono { font-family: 'JetBrains Mono', monospace; }
-        .hud-grid {
-            background-size: 32px 32px;
+        
+        /* Modern subtle grid */
+        .subtle-grid {
+            background-size: 40px 40px;
             background-image: 
                 linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         }
-        #webgl-canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
+
+        .glass-panel {
+            background: rgba(7, 13, 30, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(31, 46, 88, 0.6);
         }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            transform: translateY(-3px);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 12px 30px -10px rgba(6, 182, 212, 0.2);
+        }
+
+        /* 3D Label Pins */
+        .station-pin {
+            position: absolute;
+            transform: translate(-50%, -100%);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .station-pin:hover {
+            transform: translate(-50%, -115%) scale(1.08);
+        }
+
         /* Custom scrollbar */
         ::-webkit-scrollbar { width: 5px; height: 5px; }
-        ::-webkit-scrollbar-track { background: #040711; }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #172347; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1f2e58; }
     </style>
 </head>
-<body class="bg-hud-bg text-slate-100 font-sans min-h-screen overflow-x-hidden selection:bg-emerald-500 selection:text-black">
+<body class="bg-[#030712] text-slate-100 font-sans min-h-screen overflow-x-hidden selection:bg-cyan-500 selection:text-black">
 
-    <!-- Top Floating Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#040711]/85 backdrop-blur-md border-b border-hud-border/80 px-4 lg:px-8 py-3">
+    <!-- Top Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#030712]/80 backdrop-blur-xl border-b border-space-border/50 px-4 lg:px-8 py-3">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <div class="relative flex h-3 w-3">
@@ -74,22 +106,19 @@
                 </div>
                 <div>
                     <div class="text-sm font-bold tracking-wider text-white mono flex items-center gap-2">
-                        MUHAMMAD OS <span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">3D-COMMAND-DECK</span>
+                        MUHAMMAD OS <span class="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 font-semibold">3D COMMAND ROOM</span>
                     </div>
-                    <div class="text-[11px] text-slate-400 hidden sm:block">AI Solutions Architect & Cloud Platform Engineer</div>
                 </div>
             </div>
 
-            <!-- View Switcher & Action -->
+            <!-- Header Actions -->
             <div class="flex items-center space-x-3 text-xs mono">
-                <div class="hidden md:flex items-center space-x-2 bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400">
-                    <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                        <i data-lucide="orbit" class="w-3.5 h-3.5 animate-spin"></i> Interactive 3D Room
-                    </span>
-                    <span class="text-slate-700">|</span>
-                    <span class="text-slate-400">Click objects to inspect</span>
+                <div class="hidden md:flex items-center space-x-3 bg-space-900/90 px-3 py-1.5 rounded-xl border border-space-border text-slate-400 text-[11px]">
+                    <div>INFRA: <span class="text-emerald-400 font-bold">150+ CLOUD NODES</span></div>
+                    <div class="text-slate-700">|</div>
+                    <div>FINOPS: <span class="text-cyan-400 font-bold">-87% COGS</span></div>
                 </div>
-                <a href="Muhammad_Osama_Amin_CV_Tech.pdf" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-all shadow-lg shadow-emerald-500/10">
+                <a href="Muhammad_Osama_Amin_CV_Tech.pdf" target="_blank" class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-bold transition-all shadow-lg shadow-cyan-500/20">
                     <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
                     <span>Download CV</span>
                 </a>
@@ -97,55 +126,85 @@
         </div>
     </header>
 
-    <!-- 3D Spatial Canvas Viewport (Hero Section) -->
-    <div class="relative w-full h-[75vh] min-h-[520px] pt-16 bg-[#03060E] border-b border-slate-800/80 overflow-hidden">
+    <!-- 3D VIRTUAL ROOM HERO SECTION -->
+    <div class="relative w-full h-[80vh] min-h-[580px] pt-14 bg-gradient-to-b from-[#030712] via-[#070D1E] to-[#030712] border-b border-space-border/60 overflow-hidden">
         
-        <!-- Three.js Canvas Container -->
+        <!-- Three.js Canvas -->
         <div id="canvas-container" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
 
-        <!-- 3D Room Control Overlay -->
-        <div class="absolute bottom-4 left-4 right-4 pointer-events-none">
-            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                
-                <!-- Camera Presets / Direct Object Selectors -->
-                <div class="pointer-events-auto flex flex-wrap items-center gap-2 bg-[#0B1120]/90 p-2 rounded-xl border border-slate-800/90 backdrop-blur-md shadow-2xl">
-                    <span class="text-[10px] mono uppercase text-slate-400 px-2 font-bold hidden sm:inline">Inspect Station:</span>
-                    <button onclick="focusStation('serverRack')" class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-cyan-500/20 text-cyan-300 border border-slate-700 hover:border-cyan-500/40 text-xs mono transition-all flex items-center gap-1.5">
-                        <i data-lucide="server" class="w-3 h-3 text-cyan-400"></i> Server Rack (150+ Nodes)
-                    </button>
-                    <button onclick="focusStation('agentTerminal')" class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-emerald-500/20 text-emerald-300 border border-slate-700 hover:border-emerald-500/40 text-xs mono transition-all flex items-center gap-1.5">
-                        <i data-lucide="terminal" class="w-3 h-3 text-emerald-400"></i> AI Agent Core (37 Tools)
-                    </button>
-                    <button onclick="focusStation('finopsGlobe')" class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-purple-500/20 text-purple-300 border border-slate-700 hover:border-purple-500/40 text-xs mono transition-all flex items-center gap-1.5">
-                        <i data-lucide="pie-chart" class="w-3 h-3 text-purple-400"></i> FinOps Globe (-87%)
-                    </button>
-                    <button onclick="resetCamera()" class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs mono transition-all" title="Reset View">
-                        <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
-                    </button>
+        <!-- 3D Interactive Screen Pins / Badges Container (Projected in 2D Screen Space) -->
+        <div id="pins-container" class="absolute inset-0 pointer-events-none z-20">
+            <!-- Pin: Server Rack -->
+            <div id="pin-serverRack" class="station-pin hidden" onclick="focusStation('serverRack')">
+                <div class="glass-panel px-3 py-1.5 rounded-xl text-xs mono text-cyan-300 flex items-center gap-2 shadow-2xl border-cyan-500/40">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span class="font-bold">Multi-Cloud Rack</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-700">150+ Nodes</span>
                 </div>
+            </div>
 
-                <!-- 3D Navigation Hint -->
-                <div class="hidden lg:flex items-center gap-2 text-[11px] mono text-slate-400 bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800">
-                    <i data-lucide="move" class="w-3.5 h-3.5 text-cyan-400 animate-pulse"></i>
-                    <span>Drag to rotate · Scroll to zoom · Click stations to inspect</span>
+            <!-- Pin: AI Agent Core -->
+            <div id="pin-agentTerminal" class="station-pin hidden" onclick="focusStation('agentTerminal')">
+                <div class="glass-panel px-3 py-1.5 rounded-xl text-xs mono text-emerald-300 flex items-center gap-2 shadow-2xl border-emerald-500/40">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="font-bold">NebulaSEO Agent</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-700">37 Tools</span>
+                </div>
+            </div>
+
+            <!-- Pin: FinOps Telemetry -->
+            <div id="pin-finopsGlobe" class="station-pin hidden" onclick="focusStation('finopsGlobe')">
+                <div class="glass-panel px-3 py-1.5 rounded-xl text-xs mono text-purple-300 flex items-center gap-2 shadow-2xl border-purple-500/40">
+                    <span class="w-2 h-2 rounded-full bg-purple-400 animate-ping"></span>
+                    <span class="font-bold">Substacker FinOps</span>
+                    <span class="text-[10px] text-slate-400 bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-700">-87% COGS</span>
                 </div>
             </div>
         </div>
 
-        <!-- Floating 3D Inspection HUD Modal / Drawer (Dynamic on click) -->
-        <div id="station-inspector" class="absolute top-20 right-4 w-96 max-w-[calc(100vw-2rem)] bg-[#0B1120]/95 backdrop-blur-xl border border-hud-border p-5 rounded-2xl shadow-2xl transition-all duration-300 transform translate-x-0 hidden">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-                <div class="flex items-center gap-2">
-                    <span id="inspect-icon" class="p-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                        <i data-lucide="server" class="w-4 h-4"></i>
+        <!-- 3D Room Bottom Controls -->
+        <div class="absolute bottom-5 left-4 right-4 z-30 pointer-events-none">
+            <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                
+                <!-- Quick Station Navigators -->
+                <div class="pointer-events-auto flex flex-wrap items-center gap-2 glass-panel p-2 rounded-2xl shadow-2xl">
+                    <span class="text-[10px] mono uppercase text-slate-400 px-2 font-bold hidden sm:inline">Inspect Station:</span>
+                    <button onclick="focusStation('serverRack')" class="px-3 py-1.5 rounded-xl bg-space-900/90 hover:bg-cyan-500/20 text-cyan-300 border border-space-border hover:border-cyan-500/40 text-xs mono transition-all flex items-center gap-2">
+                        <i data-lucide="server" class="w-3.5 h-3.5 text-cyan-400"></i> Cloud Infra (150+)
+                    </button>
+                    <button onclick="focusStation('agentTerminal')" class="px-3 py-1.5 rounded-xl bg-space-900/90 hover:bg-emerald-500/20 text-emerald-300 border border-space-border hover:border-emerald-500/40 text-xs mono transition-all flex items-center gap-2">
+                        <i data-lucide="terminal" class="w-3.5 h-3.5 text-emerald-400"></i> AI Agents (37 Tools)
+                    </button>
+                    <button onclick="focusStation('finopsGlobe')" class="px-3 py-1.5 rounded-xl bg-space-900/90 hover:bg-purple-500/20 text-purple-300 border border-space-border hover:border-purple-500/40 text-xs mono transition-all flex items-center gap-2">
+                        <i data-lucide="pie-chart" class="w-3.5 h-3.5 text-purple-400"></i> FinOps Engine (-87%)
+                    </button>
+                    <button onclick="resetCamera()" class="px-2.5 py-1.5 rounded-xl bg-space-800 hover:bg-space-700 text-slate-300 text-xs mono transition-all" title="Reset View">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+
+                <!-- Navigation Guidance -->
+                <div class="hidden lg:flex items-center gap-2 text-xs mono text-slate-400 glass-panel px-3.5 py-2 rounded-xl">
+                    <i data-lucide="move" class="w-3.5 h-3.5 text-cyan-400 animate-pulse"></i>
+                    <span>Drag to rotate · Scroll to zoom · Click pins or objects to inspect</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Live Station Inspection Dossier (Slide-over card) -->
+        <div id="station-inspector" class="absolute top-20 right-4 w-[420px] max-w-[calc(100vw-2rem)] glass-panel p-6 rounded-2xl shadow-2xl z-40 transition-all duration-300 transform translate-x-0 hidden border border-cyan-500/40">
+            <div class="flex items-center justify-between border-b border-space-border/80 pb-3 mb-4">
+                <div class="flex items-center gap-3">
+                    <span id="inspect-icon" class="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                        <i data-lucide="server" class="w-5 h-5"></i>
                     </span>
                     <div>
-                        <div id="inspect-title" class="text-xs font-bold text-white mono uppercase">STATION: SERVER RACK</div>
-                        <div id="inspect-subtitle" class="text-[10px] text-slate-400">Multi-Cloud Infrastructure</div>
+                        <div id="inspect-title" class="text-sm font-bold text-white mono uppercase">STATION: SERVER RACK</div>
+                        <div id="inspect-subtitle" class="text-[11px] text-cyan-400 mono">Multi-Cloud Infrastructure</div>
                     </div>
                 </div>
-                <button onclick="closeInspector()" class="text-slate-400 hover:text-white p-1">
-                    <i data-lucide="x" class="w-4 h-4"></i>
+                <button onclick="closeInspector()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-space-800 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
             
@@ -153,30 +212,43 @@
                 Engineered 150+ production deployments across AWS, Azure, and GCP with zero-trust network policies, AVD estates, and HIPAA-compliant healthcare hosting.
             </p>
 
-            <div id="inspect-tags" class="flex flex-wrap gap-1.5 mb-4 text-[10px] mono text-cyan-300">
-                <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">AWS ECS</span>
-                <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">GCP Cloud Run</span>
-                <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Azure VDI</span>
+            <!-- Dynamic Station Live Telemetry Metrics -->
+            <div id="inspect-metrics" class="grid grid-cols-2 gap-2 mb-4">
+                <div class="bg-space-950/80 p-2.5 rounded-xl border border-space-border">
+                    <div class="text-[10px] mono text-slate-400">STATUS</div>
+                    <div id="metric-1" class="text-xs font-bold text-emerald-400 mono">100% HEALTHY</div>
+                </div>
+                <div class="bg-space-950/80 p-2.5 rounded-xl border border-space-border">
+                    <div class="text-[10px] mono text-slate-400">CORE BENEFIT</div>
+                    <div id="metric-2" class="text-xs font-bold text-cyan-400 mono">87% COGS REDUCTION</div>
+                </div>
             </div>
 
-            <a id="inspect-link" href="#infrastructure" class="w-full py-2 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs mono font-semibold flex items-center justify-center gap-1.5 transition-all">
-                <span>View Full Telemetry</span>
-                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            <div id="inspect-tags" class="flex flex-wrap gap-1.5 mb-5 text-[10px] mono text-slate-300">
+                <span class="px-2.5 py-1 rounded-lg bg-space-900 border border-space-border">AWS ECS</span>
+                <span class="px-2.5 py-1 rounded-lg bg-space-900 border border-space-border">GCP Cloud Run</span>
+                <span class="px-2.5 py-1 rounded-lg bg-space-900 border border-space-border">Azure VDI</span>
+            </div>
+
+            <a id="inspect-link" href="#featured-systems" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/20 to-emerald-500/20 hover:from-cyan-500/30 hover:to-emerald-500/30 text-cyan-300 border border-cyan-500/40 text-xs mono font-bold flex items-center justify-center gap-2 transition-all">
+                <span>View Full System Architecture</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
         </div>
     </div>
 
-    <!-- Main Content & Detailed Dossiers -->
-    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-10 space-y-12 hud-grid">
+    <!-- MAIN BODY CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-12 subtle-grid">
 
-        <!-- Identity & Metrics Deck -->
+        <!-- Core Profile & Key Numbers -->
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="lg:col-span-2 bg-hud-card rounded-2xl border border-hud-border p-6 flex flex-col justify-between space-y-4">
+            <!-- Identity Overview -->
+            <div class="lg:col-span-2 glass-panel p-7 rounded-3xl flex flex-col justify-between space-y-5">
                 <div class="space-y-3">
                     <div class="flex items-center justify-between">
-                        <span class="mono text-xs uppercase tracking-widest text-emerald-400 font-semibold flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                            Verified Production Engineering
+                        <span class="mono text-xs uppercase tracking-widest text-cyan-400 font-bold flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                            AI Solutions Architect & Cloud Engineering
                         </span>
                         <span class="mono text-xs text-slate-500">Islamabad, PK · Open to Relocation</span>
                     </div>
@@ -191,188 +263,189 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-800">
-                    <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                <!-- Verified Metric Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-space-border/60">
+                    <div class="bg-space-950/60 p-3.5 rounded-2xl border border-space-border">
                         <div class="text-[10px] text-slate-400 uppercase mono font-semibold">Deployments</div>
-                        <div class="text-xl font-bold text-white mono mt-0.5">150+</div>
+                        <div class="text-xl font-extrabold text-white mono mt-0.5">150+</div>
                         <div class="text-[10px] text-emerald-400">AWS / Azure / GCP</div>
                     </div>
-                    <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                    <div class="bg-space-950/60 p-3.5 rounded-2xl border border-space-border">
                         <div class="text-[10px] text-slate-400 uppercase mono font-semibold">FinOps Savings</div>
-                        <div class="text-xl font-bold text-cyan-400 mono mt-0.5">-87%</div>
+                        <div class="text-xl font-extrabold text-cyan-400 mono mt-0.5">-87%</div>
                         <div class="text-[10px] text-slate-400">Per-unit infra COGS</div>
                     </div>
-                    <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                    <div class="bg-space-950/60 p-3.5 rounded-2xl border border-space-border">
                         <div class="text-[10px] text-slate-400 uppercase mono font-semibold">Autonomous Tools</div>
-                        <div class="text-xl font-bold text-purple-400 mono mt-0.5">37 Tools</div>
+                        <div class="text-xl font-extrabold text-purple-400 mono mt-0.5">37 Tools</div>
                         <div class="text-[10px] text-slate-400">Gemini 3 Pro loop</div>
                     </div>
-                    <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800">
+                    <div class="bg-space-950/60 p-3.5 rounded-2xl border border-space-border">
                         <div class="text-[10px] text-slate-400 uppercase mono font-semibold">Consulting Rating</div>
-                        <div class="text-xl font-bold text-amber-400 mono mt-0.5">4.97 / 5.0</div>
-                        <div class="text-[10px] text-slate-400">100+ paid engagements</div>
+                        <div class="text-xl font-extrabold text-amber-400 mono mt-0.5">4.97 / 5.0</div>
+                        <div class="text-[10px] text-slate-400">100+ paid client gigs</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Direct Contact & Channels -->
-            <div class="bg-hud-card rounded-2xl border border-hud-border p-6 flex flex-col justify-between space-y-4">
-                <div class="border-b border-slate-800 pb-3 flex items-center justify-between">
+            <!-- Communication Channels -->
+            <div class="glass-panel p-7 rounded-3xl flex flex-col justify-between space-y-4">
+                <div class="border-b border-space-border/80 pb-3 flex items-center justify-between">
                     <span class="mono text-xs text-slate-400 font-semibold uppercase flex items-center gap-2">
-                        <i data-lucide="radio" class="w-3.5 h-3.5 text-cyan-400"></i> Communication Gateway
+                        <i data-lucide="radio" class="w-4 h-4 text-cyan-400"></i> Direct Channels
                     </span>
-                    <span class="text-[10px] mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">READY</span>
+                    <span class="text-[10px] mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/20 font-bold">ACTIVE</span>
                 </div>
                 <div class="space-y-2.5 text-xs mono">
-                    <div class="flex items-center justify-between p-2 rounded bg-slate-950/60 border border-slate-800/80">
+                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-space-950/60 border border-space-border">
                         <span class="text-slate-400 flex items-center gap-2"><i data-lucide="mail" class="w-3.5 h-3.5 text-amber-400"></i> Email</span>
-                        <a href="mailto:osamaaminemail@gmail.com" class="text-white hover:text-emerald-400">osamaaminemail@gmail.com</a>
+                        <a href="mailto:osamaaminemail@gmail.com" class="text-white hover:text-cyan-400 transition-colors">osamaaminemail@gmail.com</a>
                     </div>
-                    <div class="flex items-center justify-between p-2 rounded bg-slate-950/60 border border-slate-800/80">
+                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-space-950/60 border border-space-border">
                         <span class="text-slate-400 flex items-center gap-2"><i data-lucide="github" class="w-3.5 h-3.5 text-slate-200"></i> GitHub</span>
                         <a href="https://github.com/Vmnebula" target="_blank" class="text-emerald-400 hover:underline">github.com/Vmnebula</a>
                     </div>
-                    <div class="flex items-center justify-between p-2 rounded bg-slate-950/60 border border-slate-800/80">
+                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-space-950/60 border border-space-border">
                         <span class="text-slate-400 flex items-center gap-2"><i data-lucide="linkedin" class="w-3.5 h-3.5 text-cyan-400"></i> LinkedIn</span>
                         <a href="https://www.linkedin.com/in/muhammad-osama-amin/" target="_blank" class="text-cyan-400 hover:underline">muhammad-osama-amin</a>
                     </div>
-                    <div class="flex items-center justify-between p-2 rounded bg-slate-950/60 border border-slate-800/80">
+                    <div class="flex items-center justify-between p-2.5 rounded-xl bg-space-950/60 border border-space-border">
                         <span class="text-slate-400 flex items-center gap-2"><i data-lucide="award" class="w-3.5 h-3.5 text-purple-400"></i> Certs</span>
                         <span class="text-slate-200">Aviatrix ACE · DS4KP ML</span>
                     </div>
                 </div>
-                <a href="mailto:osamaaminemail@gmail.com?subject=Senior%20Engineering%20Role%20Inquiry" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-medium text-xs mono text-center transition-all border border-slate-700 flex items-center justify-center gap-2">
-                    <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                <a href="mailto:osamaaminemail@gmail.com?subject=Senior%20Engineering%20Role%20Inquiry" class="w-full py-3 rounded-2xl bg-space-800 hover:bg-space-700 text-white font-semibold text-xs mono text-center transition-all border border-space-border flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
                     <span>Contact Directly</span>
                 </a>
             </div>
         </section>
 
-        <!-- Flagship Systems Showcase -->
-        <section id="infrastructure" class="space-y-6">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <!-- Flagship Systems & Live Repos -->
+        <section id="featured-systems" class="space-y-6">
+            <div class="flex items-center justify-between border-b border-space-border/80 pb-4">
                 <div>
-                    <h2 class="text-lg font-bold text-white mono flex items-center gap-2">
-                        <i data-lucide="cpu" class="w-5 h-5 text-emerald-400"></i>
-                        FLAGSHIP PRODUCTION SYSTEMS & OPEN SOURCE
+                    <h2 class="text-xl font-bold text-white mono flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5 text-cyan-400"></i>
+                        FEATURED PRODUCTION SYSTEMS & OPEN SOURCE
                     </h2>
-                    <p class="text-xs text-slate-400">Tested, audited, and deployed architecture</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Audited, production-tested architectures</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- NebulaSEO -->
-                <div class="bg-hud-card p-5 rounded-2xl border border-hud-border hover:border-purple-500/40 transition-all flex flex-col justify-between space-y-4">
+                <div class="glass-panel glass-card-hover p-6 rounded-3xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">GPLv3</span>
-                            <a href="https://github.com/Vmnebula/NebulaSeo" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-4 h-4"></i></a>
+                            <span class="text-[10px] mono px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30 font-bold">GPLv3</span>
+                            <a href="https://github.com/Vmnebula/NebulaSeo" target="_blank" class="text-slate-400 hover:text-white p-1"><i data-lucide="github" class="w-5 h-5"></i></a>
                         </div>
-                        <h3 class="font-bold text-white text-base">NebulaSEO</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
+                        <h3 class="font-bold text-white text-lg">NebulaSEO</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
                             Autonomous Gemini 3 Pro agent with 37 tools that queries GA4/GSC via BigQuery and creates automated GitHub PRs.
                         </p>
                     </div>
-                    <div class="text-[11px] mono text-purple-400 font-semibold">FastAPI · Gemini 3 Pro · Next.js 14</div>
+                    <div class="text-[11px] mono text-purple-400 font-semibold pt-3 border-t border-space-border/50">FastAPI · Gemini 3 Pro · Next.js 14</div>
                 </div>
 
                 <!-- Substacker -->
-                <div class="bg-hud-card p-5 rounded-2xl border border-hud-border hover:border-cyan-500/40 transition-all flex flex-col justify-between space-y-4">
+                <div class="glass-panel glass-card-hover p-6 rounded-3xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">MIT · Live</span>
+                            <span class="text-[10px] mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-bold">MIT · Live</span>
                             <div class="flex items-center gap-2">
-                                <a href="https://substacker.vmnebula.com" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="globe" class="w-4 h-4"></i></a>
-                                <a href="https://github.com/Vmnebula/substacker" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-4 h-4"></i></a>
+                                <a href="https://substacker.vmnebula.com" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="globe" class="w-5 h-5"></i></a>
+                                <a href="https://github.com/Vmnebula/substacker" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
                             </div>
                         </div>
-                        <h3 class="font-bold text-white text-base">Substacker</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
+                        <h3 class="font-bold text-white text-lg">Substacker</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
                             Multi-provider LLM FinOps cost attribution engine (OpenAI, Anthropic, Gemini, Azure) with Python SDK and WebSockets.
                         </p>
                     </div>
-                    <div class="text-[11px] mono text-cyan-400 font-semibold">FastAPI · Python SDK · Supabase</div>
+                    <div class="text-[11px] mono text-cyan-400 font-semibold pt-3 border-t border-space-border/50">FastAPI · Python SDK · Supabase</div>
                 </div>
 
                 <!-- Bulk AI Studio -->
-                <div class="bg-hud-card p-5 rounded-2xl border border-hud-border hover:border-amber-500/40 transition-all flex flex-col justify-between space-y-4">
+                <div class="glass-panel glass-card-hover p-6 rounded-3xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">Google Certified</span>
-                            <span class="text-[10px] mono text-slate-500">ID: 323643388682</span>
+                            <span class="text-[10px] mono px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 font-bold">Google Certified</span>
+                            <span class="text-[10px] mono text-slate-500">App ID: 323643388682</span>
                         </div>
-                        <h3 class="font-bold text-white text-base">Bulk AI Studio</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
+                        <h3 class="font-bold text-white text-lg">Bulk AI Studio</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
                             Google Workspace Marketplace certified application for high-throughput batch AI transformations in Google Sheets.
                         </p>
                     </div>
-                    <div class="text-[11px] mono text-amber-400 font-semibold">Apps Script · Fastify · Cloud Run</div>
+                    <div class="text-[11px] mono text-amber-400 font-semibold pt-3 border-t border-space-border/50">Apps Script · Fastify · Cloud Run</div>
                 </div>
 
                 <!-- Sarkit Voice AI -->
-                <div class="bg-hud-card p-5 rounded-2xl border border-hud-border hover:border-emerald-500/40 transition-all flex flex-col justify-between space-y-4">
+                <div class="glass-panel glass-card-hover p-6 rounded-3xl flex flex-col justify-between space-y-4">
                     <div class="space-y-3">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Production</span>
-                            <a href="https://sarkit.vmnebula.com" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="globe" class="w-4 h-4"></i></a>
+                            <span class="text-[10px] mono px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-bold">Production</span>
+                            <a href="https://sarkit.vmnebula.com" target="_blank" class="text-slate-400 hover:text-white"><i data-lucide="globe" class="w-5 h-5"></i></a>
                         </div>
-                        <h3 class="font-bold text-white text-base">Sarkit (سارکٹ)</h3>
-                        <p class="text-xs text-slate-400 leading-relaxed">
+                        <h3 class="font-bold text-white text-lg">Sarkit (سارکٹ)</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
                             WhatsApp-native retail operating system converting spoken Urdu voice notes into structured MySQL ledger records.
                         </p>
                     </div>
-                    <div class="text-[11px] mono text-emerald-400 font-semibold">Vertex AI · Fastify · Laravel GCE</div>
+                    <div class="text-[11px] mono text-emerald-400 font-semibold pt-3 border-t border-space-border/50">Vertex AI · Fastify · Laravel GCE</div>
                 </div>
             </div>
         </section>
 
         <!-- Verified Work History -->
-        <section class="bg-hud-card rounded-2xl border border-hud-border p-6 space-y-5">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h2 class="text-lg font-bold text-white mono flex items-center gap-2">
+        <section class="glass-panel p-8 rounded-3xl space-y-6">
+            <div class="flex items-center justify-between border-b border-space-border/80 pb-4">
+                <h2 class="text-xl font-bold text-white mono flex items-center gap-2">
                     <i data-lucide="briefcase" class="w-5 h-5 text-cyan-400"></i>
-                    VERIFIED WORK EXPERIENCE
+                    VERIFIED PRODUCTION WORK EXPERIENCE
                 </h2>
                 <span class="mono text-xs text-slate-400">6 Years Total</span>
             </div>
 
             <div class="space-y-4 text-xs mono">
-                <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                <div class="p-5 rounded-2xl bg-space-950/80 border border-space-border space-y-2">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-300">
                         <span class="font-bold text-sm text-white">VM Nebula (Pvt.) Ltd. · Founder & Chief Architect</span>
-                        <span class="text-emerald-400">Aug 2024 – Aug 2026 (Advisory from Aug 2026) | Islamabad, PK</span>
+                        <span class="text-emerald-400 font-bold">Aug 2024 – Aug 2026 (Advisory from Aug 2026) | Islamabad, PK</span>
                     </div>
-                    <p class="text-slate-400 leading-relaxed font-sans text-xs">
+                    <p class="text-slate-300 leading-relaxed font-sans text-xs pt-1">
                         Ran applied-AI and cloud platform business across KSA, UAE, PK, and Madagascar. Owned DevOps, IaC, and FinOps across AWS, GCP, and Azure; re-platformed production runtime cutting per-unit infrastructure cost by ~87%. Delivered voice-to-ledger pipeline on Vertex AI.
                     </p>
                 </div>
 
-                <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                <div class="p-5 rounded-2xl bg-space-950/80 border border-space-border space-y-2">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between text-slate-300">
                         <span class="font-bold text-sm text-white">Amin Technologies Limited (UK) · Cloud Operations Lead</span>
-                        <span class="text-cyan-400">Jan 2023 – Jun 2025 | Remote (UK / London)</span>
+                        <span class="text-cyan-400 font-bold">Jan 2023 – Jun 2025 | Remote (UK / London)</span>
                     </div>
-                    <p class="text-slate-400 leading-relaxed font-sans text-xs">
+                    <p class="text-slate-300 leading-relaxed font-sans text-xs pt-1">
                         Led cloud operations for UK-registered MSP. Built enterprise Azure Virtual Desktop estate in UAE North with private Git and real-time monitoring; delivered multi-session FSLogix and RDS profile containers at scale; maintained HIPAA-compliant cloud hosting.
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                    <div class="p-5 rounded-2xl bg-space-950/80 border border-space-border space-y-2">
                         <div class="flex items-center justify-between text-slate-300">
                             <span class="font-bold text-white">Independent Consultant</span>
-                            <span class="text-amber-400">Nov 2020 – Present</span>
+                            <span class="text-amber-400 font-bold">Nov 2020 – Present</span>
                         </div>
-                        <p class="text-slate-400 leading-relaxed font-sans text-xs">
+                        <p class="text-slate-300 leading-relaxed font-sans text-xs pt-1">
                             100+ paid engagements across Gulf, US, UK, Europe (4.97/5.0 rating). AVD VPN gateways, RDS FSLogix, AWS/GCP disaster recovery architecture.
                         </p>
                     </div>
-                    <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                    <div class="p-5 rounded-2xl bg-space-950/80 border border-space-border space-y-2">
                         <div class="flex items-center justify-between text-slate-300">
                             <span class="font-bold text-white">HDPO (Director, IT & Digital)</span>
-                            <span class="text-purple-400">Apr 2023 – Present</span>
+                            <span class="text-purple-400 font-bold">Apr 2023 – Present</span>
                         </div>
-                        <p class="text-slate-400 leading-relaxed font-sans text-xs">
+                        <p class="text-slate-300 leading-relaxed font-sans text-xs pt-1">
                             Led digital transformation for non-profit operations, accelerating project delivery efficiency by 35% through open-source cloud tooling.
                         </p>
                     </div>
@@ -381,253 +454,353 @@
         </section>
 
         <!-- Footer -->
-        <footer class="bg-hud-card rounded-2xl border border-hud-border p-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs mono">
+        <footer class="glass-panel p-7 rounded-3xl flex flex-col md:flex-row items-center justify-between gap-4 text-xs mono">
             <div>
-                <div class="text-white font-bold">University of Engineering & Technology (UET), Peshawar</div>
+                <div class="text-white font-bold text-sm">University of Engineering & Technology (UET), Peshawar</div>
                 <div class="text-slate-400 mt-0.5">B.S. Computer Science</div>
             </div>
-            <div class="text-slate-500 text-center md:text-right">
+            <div class="text-slate-400 text-center md:text-right">
                 <div>Accelerators: Misk (Saudi Arabia) · Orbit Accelerator · NIC Peshawar</div>
-                <div class="text-emerald-400 font-semibold mt-0.5">Featured on National TV & International Media</div>
+                <div class="text-cyan-400 font-semibold mt-0.5">Featured on National TV & International Media</div>
             </div>
         </footer>
     </main>
 
-    <!-- Three.js 3D Virtual Command Room Engine -->
+    <!-- 3D VIRTUAL STUDIO ENGINE SCRIPT -->
     <script>
         lucide.createIcons();
 
         let scene, camera, renderer, controls;
         const container = document.getElementById('canvas-container');
         const objects = [];
-        let raycaster = new THREE.Raycaster();
-        let mouse = new THREE.Vector2();
+        const interactiveStations = {};
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
 
-        const stationTargets = {
+        // 3D Station Coordinates & Content
+        const stationConfigs = {
             serverRack: {
-                title: 'STATION: 150+ NODE SERVER RACK',
-                subtitle: 'Multi-Cloud Production Infrastructure',
+                name: 'serverRack',
+                worldPos: new THREE.Vector3(-3.2, 1.4, 0),
+                camPos: { x: -3.2, y: 2.8, z: 4.2 },
+                targetPos: { x: -3.2, y: 1.2, z: 0 },
+                title: 'STATION: 150+ NODE CLOUD RACK',
+                subtitle: 'Multi-Cloud Architecture',
                 body: 'Engineered 150+ production deployments across AWS, Azure, and GCP with zero-trust network policies, AVD estates, and HIPAA-compliant healthcare hosting.',
-                tags: ['AWS ECS Fargate', 'GCP Cloud Run', 'Azure AVD', 'Terraform'],
-                camPos: { x: -4, y: 3.5, z: 4.5 },
-                targetPos: { x: -3.5, y: 1.5, z: 0 }
+                metric1: '150+ DEPLOYMENTS',
+                metric2: 'AZURE / AWS / GCP',
+                tags: ['AWS ECS Fargate', 'GCP Cloud Run', 'Azure AVD', 'Terraform', 'Zero-Trust']
             },
             agentTerminal: {
+                name: 'agentTerminal',
+                worldPos: new THREE.Vector3(0, 1.3, -0.6),
+                camPos: { x: 0, y: 2.4, z: 3.2 },
+                targetPos: { x: 0, y: 1.1, z: -0.6 },
                 title: 'STATION: AUTONOMOUS AGENT CORE',
                 subtitle: 'NebulaSEO 37-Tool Engine',
                 body: 'Autonomous Gemini 3 Pro reasoning loop that ingests Google BigQuery GA4/Search Console telemetry, audits Core Web Vitals, and autonomously creates GitHub PRs.',
-                tags: ['Gemini 3 Pro', 'FastAPI', 'BigQuery', 'Docker CI/CD'],
-                camPos: { x: 0, y: 3, z: 4 },
-                targetPos: { x: 0, y: 1.5, z: -1 }
+                metric1: '37 TOOLS',
+                metric2: '0 HUMAN IN LOOP',
+                tags: ['Gemini 3 Pro', 'FastAPI', 'BigQuery', 'Docker CI/CD', 'Next.js 14']
             },
             finopsGlobe: {
+                name: 'finopsGlobe',
+                worldPos: new THREE.Vector3(3.2, 1.4, 0),
+                camPos: { x: 3.2, y: 2.8, z: 4.2 },
+                targetPos: { x: 3.2, y: 1.2, z: 0 },
                 title: 'STATION: FINOPS TELEMETRY GLOBE',
                 subtitle: 'Substacker & 87% Re-Platforming',
                 body: 'Multi-tenant FinOps engine attributing LLM compute spend across OpenAI, Anthropic, Gemini, and Azure. Re-platformed production runtime cutting COGS by ~87%.',
-                tags: ['Substacker', 'Python SDK', 'Supabase', 'WebSockets'],
-                camPos: { x: 4, y: 3.5, z: 4.5 },
-                targetPos: { x: 3.5, y: 1.5, z: 0 }
+                metric1: '-87% COGS',
+                metric2: '4 LLM PROVIDERS',
+                tags: ['Substacker', 'Python SDK', 'Supabase', 'WebSockets', 'FinOps']
             }
         };
 
         function init3D() {
-            // Scene Setup
             scene = new THREE.Scene();
-            scene.fog = new THREE.FogExp2(0x03060E, 0.04);
+            scene.fog = new THREE.FogExp2(0x030712, 0.035);
 
-            // Camera Setup (Isometric Angle)
-            camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
-            camera.position.set(0, 6, 9);
+            camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.1, 100);
+            camera.position.set(0, 5.5, 9.5);
 
-            // Renderer Setup
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(container.clientWidth, container.clientHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            renderer.toneMapping = THREE.ACESFilmicToneMapping;
+            renderer.toneMappingExposure = 1.1;
             container.appendChild(renderer.domElement);
 
-            // Orbit Controls
             controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
-            controls.maxPolarAngle = Math.PI / 2.1;
-            controls.minDistance = 3;
+            controls.maxPolarAngle = Math.PI / 2.15;
+            controls.minDistance = 3.5;
             controls.maxDistance = 14;
+            controls.target.set(0, 0.8, 0);
 
-            // Ambient & Directional Lighting
-            const ambientLight = new THREE.AmbientLight(0x0f172a, 1.8);
+            // Lighting Design (Cyberpunk / Studio High-Tech)
+            const ambientLight = new THREE.AmbientLight(0x0B1226, 2.5);
             scene.add(ambientLight);
 
-            const dirLight = new THREE.DirectionalLight(0x38bdf8, 1.2);
-            dirLight.position.set(5, 10, 7);
-            dirLight.castShadow = true;
-            scene.add(dirLight);
+            // Key Overhead Light
+            const keyLight = new THREE.DirectionalLight(0xE0F2FE, 1.4);
+            keyLight.position.set(4, 8, 6);
+            keyLight.castShadow = true;
+            keyLight.shadow.mapSize.width = 1024;
+            keyLight.shadow.mapSize.height = 1024;
+            scene.add(keyLight);
 
-            const greenLight = new THREE.PointLight(0x10b981, 2, 8);
-            greenLight.position.set(0, 3, -1);
-            scene.add(greenLight);
+            // Cyan Backlight
+            const cyanPoint = new THREE.PointLight(0x06B6D4, 3.5, 9);
+            cyanPoint.position.set(-3.2, 2.5, 1);
+            scene.add(cyanPoint);
 
-            const purpleLight = new THREE.PointLight(0x8b5cf6, 2, 8);
-            purpleLight.position.set(3.5, 2.5, 0);
-            scene.add(purpleLight);
+            // Emerald Center Glow
+            const emeraldPoint = new THREE.PointLight(0x10B981, 3.5, 9);
+            emeraldPoint.position.set(0, 2.8, -0.6);
+            scene.add(emeraldPoint);
 
-            const cyanLight = new THREE.PointLight(0x06b6d4, 2, 8);
-            cyanLight.position.set(-3.5, 2.5, 0);
-            scene.add(cyanLight);
+            // Purple Right Glow
+            const purplePoint = new THREE.PointLight(0xA855F7, 3.5, 9);
+            purplePoint.position.set(3.2, 2.5, 1);
+            scene.add(purplePoint);
 
-            // Build Room Architecture
-            buildRoom();
+            // Build Room Objects
+            buildCyberStudio();
 
-            // Event Listeners
             window.addEventListener('resize', onWindowResize);
             renderer.domElement.addEventListener('pointerdown', onPointerDown);
 
             animate();
         }
 
-        function buildRoom() {
-            // Grid Floor
-            const floorGeo = new THREE.PlaneGeometry(16, 16, 32, 32);
-            const floorMat = new THREE.MeshStandardMaterial({
-                color: 0x050811,
-                roughness: 0.8,
-                metalness: 0.2,
-                wireframe: false
+        // Texture Generator for Clean Terminal Preview Screens
+        function createTextTexture(lines, bgColor, textColor, accentColor) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 512;
+            canvas.height = 320;
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, 512, 320);
+
+            // Header bar
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, 512, 36);
+            ctx.fillStyle = accentColor;
+            ctx.font = 'bold 16px monospace';
+            ctx.fillText(lines[0] || 'TERMINAL', 16, 24);
+
+            // Screen text
+            ctx.fillStyle = textColor;
+            ctx.font = '14px monospace';
+            for (let i = 1; i < lines.length; i++) {
+                ctx.fillText(lines[i], 16, 40 + i * 28);
+            }
+
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        function buildCyberStudio() {
+            // High-Tech Circular Glowing Floor Platform
+            const platformGeo = new THREE.CylinderGeometry(6.5, 7.0, 0.3, 48);
+            const platformMat = new THREE.MeshStandardMaterial({
+                color: 0x070D1E,
+                roughness: 0.2,
+                metalness: 0.8
             });
-            const floor = new THREE.Mesh(floorGeo, floorMat);
-            floor.rotation.x = -Math.PI / 2;
-            floor.receiveShadow = true;
-            scene.add(floor);
+            const platform = new THREE.Mesh(platformGeo, platformMat);
+            platform.position.y = -0.15;
+            platform.receiveShadow = true;
+            scene.add(platform);
 
-            // Floor Grid Lines
-            const gridHelper = new THREE.GridHelper(16, 24, 0x1e293b, 0x0f172a);
-            gridHelper.position.y = 0.01;
-            scene.add(gridHelper);
+            // Floor Edge Neon Ring
+            const ringGeo = new THREE.TorusGeometry(6.6, 0.05, 16, 64);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0x06B6D4 });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = Math.PI / 2;
+            ring.position.y = 0.01;
+            scene.add(ring);
 
-            // --- 1. SERVER RACK (Left Station - Cloud Infra) ---
+            // Inner Grid
+            const grid = new THREE.GridHelper(12, 24, 0x1F2E58, 0x0F172A);
+            grid.position.y = 0.02;
+            scene.add(grid);
+
+            // ==========================================
+            // STATION 1: 150+ NODE SERVER RACK (LEFT)
+            // ==========================================
             const rackGroup = new THREE.Group();
-            rackGroup.position.set(-3.5, 0, 0);
+            rackGroup.position.set(-3.2, 0, 0);
             rackGroup.name = 'serverRack';
 
+            // Server Enclosure Frame
             const rackBody = new THREE.Mesh(
-                new THREE.BoxGeometry(1.2, 3, 1),
-                new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.3, metalness: 0.8 })
+                new THREE.BoxGeometry(1.4, 2.8, 1.1),
+                new THREE.MeshStandardMaterial({ color: 0x0B1226, roughness: 0.2, metalness: 0.9 })
             );
-            rackBody.position.y = 1.5;
+            rackBody.position.y = 1.4;
+            rackBody.castShadow = true;
             rackGroup.add(rackBody);
 
-            // Blinking LED panels on server rack
-            for (let i = 0; i < 6; i++) {
+            // Rack Top Glowing Logo
+            const rackSign = new THREE.Mesh(
+                new THREE.BoxGeometry(1.2, 0.2, 0.1),
+                new THREE.MeshBasicMaterial({ color: 0x06B6D4 })
+            );
+            rackSign.position.set(0, 2.7, 0.52);
+            rackGroup.add(rackSign);
+
+            // Server Blades with Blinking LEDs
+            for (let i = 0; i < 7; i++) {
                 const blade = new THREE.Mesh(
-                    new THREE.BoxGeometry(1.05, 0.3, 0.95),
-                    new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.4 })
+                    new THREE.BoxGeometry(1.2, 0.25, 1.0),
+                    new THREE.MeshStandardMaterial({ color: 0x111C38, metalness: 0.7, roughness: 0.3 })
                 );
-                blade.position.y = 0.5 + i * 0.4;
+                blade.position.set(0, 0.35 + i * 0.35, 0.05);
                 rackGroup.add(blade);
 
-                const led = new THREE.Mesh(
-                    new THREE.SphereGeometry(0.04, 8, 8),
-                    new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0x06b6d4 : 0x10b981 })
-                );
-                led.position.set(0.4, 0.5 + i * 0.4, 0.5);
-                rackGroup.add(led);
+                // LED 1 (Cyan)
+                const led1 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.06, 0.02), new THREE.MeshBasicMaterial({ color: 0x06B6D4 }));
+                led1.position.set(-0.45, 0.35 + i * 0.35, 0.56);
+                rackGroup.add(led1);
+
+                // LED 2 (Emerald)
+                const led2 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.06, 0.02), new THREE.MeshBasicMaterial({ color: 0x10B981 }));
+                led2.position.set(-0.35, 0.35 + i * 0.35, 0.56);
+                rackGroup.add(led2);
             }
             scene.add(rackGroup);
             objects.push(rackBody);
+            interactiveStations['serverRack'] = rackGroup;
 
-            // --- 2. HOLOGRAPHIC AI AGENT DESK (Center Station - NebulaSEO) ---
+            // ==========================================
+            // STATION 2: AI AGENT DESK (CENTER)
+            // ==========================================
             const deskGroup = new THREE.Group();
-            deskGroup.position.set(0, 0, -1);
+            deskGroup.position.set(0, 0, -0.6);
             deskGroup.name = 'agentTerminal';
 
-            const desk = new THREE.Mesh(
-                new THREE.BoxGeometry(2.8, 0.15, 1.4),
-                new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.5, roughness: 0.5 })
+            // Glass Curved Desk Top
+            const deskTop = new THREE.Mesh(
+                new THREE.BoxGeometry(2.6, 0.1, 1.2),
+                new THREE.MeshStandardMaterial({ color: 0x0E1730, metalness: 0.7, roughness: 0.2 })
             );
-            desk.position.y = 1.0;
-            deskGroup.add(desk);
+            deskTop.position.y = 0.9;
+            deskTop.castShadow = true;
+            deskGroup.add(deskTop);
 
             // Desk Legs
-            const leg1 = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.0), new THREE.MeshStandardMaterial({ color: 0x0f172a }));
-            leg1.position.set(-1.2, 0.5, -0.5);
-            deskGroup.add(leg1);
-            const leg2 = leg1.clone(); leg2.position.set(1.2, 0.5, -0.5); deskGroup.add(leg2);
-            const leg3 = leg1.clone(); leg3.position.set(-1.2, 0.5, 0.5); deskGroup.add(leg3);
-            const leg4 = leg1.clone(); leg4.position.set(1.2, 0.5, 0.5); deskGroup.add(leg4);
+            const legMat = new THREE.MeshStandardMaterial({ color: 0x070D1E, metalness: 0.9 });
+            const leg1 = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.9), legMat);
+            leg1.position.set(-1.1, 0.45, -0.45); deskGroup.add(leg1);
+            const leg2 = leg1.clone(); leg2.position.set(1.1, 0.45, -0.45); deskGroup.add(leg2);
+            const leg3 = leg1.clone(); leg3.position.set(-1.1, 0.45, 0.45); deskGroup.add(leg3);
+            const leg4 = leg1.clone(); leg4.position.set(1.1, 0.45, 0.45); deskGroup.add(leg4);
 
-            // Curved Main Screen
-            const screen = new THREE.Mesh(
-                new THREE.BoxGeometry(1.6, 0.9, 0.05),
-                new THREE.MeshStandardMaterial({ color: 0x020617, roughness: 0.1 })
+            // High-Resolution Curved Main Terminal Monitor
+            const monitorBody = new THREE.Mesh(
+                new THREE.BoxGeometry(1.6, 0.95, 0.06),
+                new THREE.MeshStandardMaterial({ color: 0x050A18, metalness: 0.8 })
             );
-            screen.position.set(0, 1.65, -0.2);
-            deskGroup.add(screen);
+            monitorBody.position.set(0, 1.55, -0.2);
+            deskGroup.add(monitorBody);
 
-            const screenGlow = new THREE.Mesh(
-                new THREE.PlaneGeometry(1.5, 0.8),
-                new THREE.MeshBasicMaterial({ color: 0x10b981, wireframe: true })
+            // Screen Display with Live NebulaSEO Code Preview Texture
+            const agentScreenTex = createTextTexture([
+                '● NEBULA-SEO AGENT (GEMINI 3 PRO)',
+                '> Ingesting GA4 & Search Console BigQuery...',
+                '> Missing JSON-LD schema detected: /pricing',
+                '> Dispatched Tool: schema_validator_tool()',
+                '> PR #104 opened: github.com/Vmnebula/NebulaSeo',
+                '> Status: Cloud Build CI PASS (14.2s)'
+            ], '#020617', '#E2E8F0', '#10B981');
+
+            const screenMesh = new THREE.Mesh(
+                new THREE.PlaneGeometry(1.5, 0.88),
+                new THREE.MeshBasicMaterial({ map: agentScreenTex })
             );
-            screenGlow.position.set(0, 1.65, -0.17);
-            deskGroup.add(screenGlow);
+            screenMesh.position.set(0, 1.55, -0.16);
+            deskGroup.add(screenMesh);
 
             scene.add(deskGroup);
-            objects.push(desk);
-            objects.push(screen);
+            objects.push(deskTop);
+            objects.push(monitorBody);
+            interactiveStations['agentTerminal'] = deskGroup;
 
-            // --- 3. FINOPS HOLOGRAM GLOBE (Right Station - Substacker) ---
-            const globeGroup = new THREE.Group();
-            globeGroup.position.set(3.5, 0, 0);
-            globeGroup.name = 'finopsGlobe';
+            // ==========================================
+            // STATION 3: FINOPS TELEMETRY GLOBE (RIGHT)
+            // ==========================================
+            const finopsGroup = new THREE.Group();
+            finopsGroup.position.set(3.2, 0, 0);
+            finopsGroup.name = 'finopsGlobe';
 
+            // Pedestal Stand
             const pedestal = new THREE.Mesh(
-                new THREE.CylinderGeometry(0.6, 0.8, 1.2, 16),
-                new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.7, roughness: 0.3 })
+                new THREE.CylinderGeometry(0.65, 0.85, 1.0, 32),
+                new THREE.MeshStandardMaterial({ color: 0x0B1226, metalness: 0.8, roughness: 0.2 })
             );
-            pedestal.position.y = 0.6;
-            globeGroup.add(pedestal);
+            pedestal.position.y = 0.5;
+            pedestal.castShadow = true;
+            finopsGroup.add(pedestal);
 
-            // Floating Holographic FinOps Wireframe Globe
-            const holoGeo = new THREE.IcosahedronGeometry(0.7, 2);
-            const holoMat = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: 0.85 });
-            const holoGlobe = new THREE.Mesh(holoGeo, holoMat);
-            holoGlobe.position.y = 1.9;
-            holoGlobe.name = 'rotatingGlobe';
-            globeGroup.add(holoGlobe);
-
-            // Orbit Ring around globe
-            const ringGeo = new THREE.RingGeometry(0.9, 1.0, 32);
-            const ringMat = new THREE.MeshBasicMaterial({ color: 0x06b6d4, side: THREE.DoubleSide, transparent: true, opacity: 0.6 });
-            const ring = new THREE.Mesh(ringGeo, ringMat);
-            ring.rotation.x = Math.PI / 3;
-            ring.position.y = 1.9;
-            globeGroup.add(ring);
-
-            scene.add(globeGroup);
-            objects.push(pedestal);
-            objects.push(holoGlobe);
-
-            // Ambient Floating Data Particles
-            const particleCount = 80;
-            const particleGeo = new THREE.BufferGeometry();
-            const posArray = new Float32Array(particleCount * 3);
-
-            for (let i = 0; i < particleCount * 3; i += 3) {
-                posArray[i] = (Math.random() - 0.5) * 12;
-                posArray[i + 1] = Math.random() * 5 + 0.5;
-                posArray[i + 2] = (Math.random() - 0.5) * 12;
-            }
-
-            particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            const particleMat = new THREE.PointsMaterial({
-                size: 0.04,
-                color: 0x38bdf8,
-                transparent: true,
-                opacity: 0.6
+            // Floating Glowing FinOps 3D Core
+            const coreGeo = new THREE.IcosahedronGeometry(0.7, 2);
+            const coreMat = new THREE.MeshStandardMaterial({
+                color: 0x8B5CF6,
+                roughness: 0.1,
+                metalness: 0.9,
+                wireframe: true,
+                emissive: 0x6D28D9,
+                emissiveIntensity: 0.6
             });
-            const particleSystem = new THREE.Points(particleGeo, particleMat);
-            scene.add(particleSystem);
+            const globeCore = new THREE.Mesh(coreGeo, coreMat);
+            globeCore.position.y = 1.75;
+            globeCore.name = 'rotatingCore';
+            finopsGroup.add(globeCore);
+
+            // Neon Orbital Rings
+            const orbitRing1 = new THREE.Mesh(
+                new THREE.TorusGeometry(0.95, 0.02, 16, 48),
+                new THREE.MeshBasicMaterial({ color: 0x06B6D4 })
+            );
+            orbitRing1.rotation.x = Math.PI / 3;
+            orbitRing1.position.y = 1.75;
+            orbitRing1.name = 'orbitRing1';
+            finopsGroup.add(orbitRing1);
+
+            const orbitRing2 = new THREE.Mesh(
+                new THREE.TorusGeometry(1.1, 0.02, 16, 48),
+                new THREE.MeshBasicMaterial({ color: 0xEC4899 })
+            );
+            orbitRing2.rotation.y = Math.PI / 4;
+            orbitRing2.position.y = 1.75;
+            orbitRing2.name = 'orbitRing2';
+            finopsGroup.add(orbitRing2);
+
+            scene.add(finopsGroup);
+            objects.push(pedestal);
+            objects.push(globeCore);
+            interactiveStations['finopsGlobe'] = finopsGroup;
+
+            // Ambient Floating Cyber Dust
+            const starCount = 100;
+            const starGeo = new THREE.BufferGeometry();
+            const starPos = new Float32Array(starCount * 3);
+            for (let i = 0; i < starCount * 3; i += 3) {
+                starPos[i] = (Math.random() - 0.5) * 14;
+                starPos[i + 1] = Math.random() * 5 + 0.2;
+                starPos[i + 2] = (Math.random() - 0.5) * 14;
+            }
+            starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+            const starMat = new THREE.PointsMaterial({ size: 0.035, color: 0x38BDF8, transparent: true, opacity: 0.7 });
+            scene.add(new THREE.Points(starGeo, starMat));
         }
 
+        // Raycasting & Pointer Down
         function onPointerDown(event) {
             const rect = renderer.domElement.getBoundingClientRect();
             mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
@@ -647,33 +820,35 @@
             }
         }
 
+        // Smooth Camera Transition via TWEEN
         function focusStation(stationKey) {
-            const data = stationTargets[stationKey];
+            const data = stationConfigs[stationKey];
             if (!data) return;
 
-            // Camera Smooth Transition via TWEEN
             new TWEEN.Tween(camera.position)
-                .to(data.camPos, 1000)
+                .to(data.camPos, 900)
                 .easing(TWEEN.Easing.Cubic.Out)
                 .start();
 
             new TWEEN.Tween(controls.target)
-                .to(data.targetPos, 1000)
+                .to(data.targetPos, 900)
                 .easing(TWEEN.Easing.Cubic.Out)
                 .start();
 
-            // Populate Floating Inspector
+            // Populate Slide-over card
             document.getElementById('inspect-title').innerText = data.title;
             document.getElementById('inspect-subtitle').innerText = data.subtitle;
             document.getElementById('inspect-body').innerText = data.body;
+            document.getElementById('metric-1').innerText = data.metric1;
+            document.getElementById('metric-2').innerText = data.metric2;
 
-            const tagsContainer = document.getElementById('inspect-tags');
-            tagsContainer.innerHTML = '';
+            const tagsCont = document.getElementById('inspect-tags');
+            tagsCont.innerHTML = '';
             data.tags.forEach(t => {
-                const tagEl = document.createElement('span');
-                tagEl.className = 'px-2 py-0.5 rounded bg-slate-900 border border-slate-800';
-                tagEl.innerText = t;
-                tagsContainer.appendChild(tagEl);
+                const el = document.createElement('span');
+                el.className = 'px-2.5 py-1 rounded-lg bg-space-900 border border-space-border';
+                el.innerText = t;
+                tagsCont.appendChild(el);
             });
 
             document.getElementById('station-inspector').classList.remove('hidden');
@@ -681,12 +856,12 @@
 
         function resetCamera() {
             new TWEEN.Tween(camera.position)
-                .to({ x: 0, y: 6, z: 9 }, 1000)
+                .to({ x: 0, y: 5.5, z: 9.5 }, 900)
                 .easing(TWEEN.Easing.Cubic.Out)
                 .start();
 
             new TWEEN.Tween(controls.target)
-                .to({ x: 0, y: 0, z: 0 }, 1000)
+                .to({ x: 0, y: 0.8, z: 0 }, 900)
                 .easing(TWEEN.Easing.Cubic.Out)
                 .start();
 
@@ -697,25 +872,57 @@
             document.getElementById('station-inspector').classList.add('hidden');
         }
 
+        // 3D to 2D Screen Space Projection for Station Pins
+        function updateScreenPins() {
+            if (!camera || !renderer) return;
+
+            Object.keys(stationConfigs).forEach(key => {
+                const pinEl = document.getElementById(`pin-${key}`);
+                if (!pinEl) return;
+
+                const pos = stationConfigs[key].worldPos.clone();
+                pos.y += 1.8; // Float pin above object
+                pos.project(camera);
+
+                // Check if behind camera
+                if (pos.z > 1) {
+                    pinEl.classList.add('hidden');
+                    return;
+                }
+
+                const x = (pos.x * 0.5 + 0.5) * container.clientWidth;
+                const y = (-(pos.y * 0.5) + 0.5) * container.clientHeight;
+
+                pinEl.style.left = `${x}px`;
+                pinEl.style.top = `${y}px`;
+                pinEl.classList.remove('hidden');
+            });
+        }
+
         function onWindowResize() {
             camera.aspect = container.clientWidth / container.clientHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(container.clientWidth, container.clientHeight);
         }
 
-        function animate(time) {
+        function animate() {
             requestAnimationFrame(animate);
             TWEEN.update();
             controls.update();
 
-            // Ambient Object Rotations
-            const globe = scene.getObjectByName('rotatingGlobe');
-            if (globe) {
-                globe.rotation.y += 0.008;
-                globe.rotation.x += 0.004;
+            // Ambient rotations
+            const core = scene.getObjectByName('rotatingCore');
+            if (core) {
+                core.rotation.y += 0.008;
+                core.rotation.x += 0.004;
             }
+            const r1 = scene.getObjectByName('orbitRing1');
+            if (r1) r1.rotation.z += 0.012;
+            const r2 = scene.getObjectByName('orbitRing2');
+            if (r2) r2.rotation.x += 0.01;
 
             renderer.render(scene, camera);
+            updateScreenPins();
         }
 
         window.onload = () => {
