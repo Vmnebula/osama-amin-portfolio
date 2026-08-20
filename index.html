@@ -255,6 +255,13 @@
                         </h3>
                         <p class="text-sm text-slate-300 leading-relaxed">
                             FinOps platform attributing multi-tenant LLM spend across OpenAI, Anthropic, Gemini, and Azure. Built with hashed API key auth, WebSockets live streaming, strict budget enforcement, anomaly detection, and a published Python SDK.
+                        <!-- Production SDK Snippet -->
+                        <div class="bg-slate-950/90 rounded-lg border border-slate-800/80 p-3 text-xs font-mono my-2.5 shadow-inner">
+                            <div class="text-slate-500 mb-1 font-semibold uppercase tracking-wider text-[10px]">Python SDK Integration</div>
+                            <pre class="text-emerald-400 overflow-x-auto leading-relaxed"><code><span class="text-purple-400">from</span> substacker <span class="text-purple-400">import</span> CostTracker
+tracker = CostTracker(api_key=<span class="text-amber-300">"sub_live_..."</span>)
+res = tracker.wrap_call(provider=<span class="text-amber-300">"anthropic"</span>, model=<span class="text-amber-300">"claude-3-7-sonnet"</span>, prompt=prompt)</code></pre>
+                        </div>
                         </p>
                     </div>
 
