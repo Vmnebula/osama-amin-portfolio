@@ -41,7 +41,7 @@ i=[
   {
     company:`VM Nebula`,
     href:`https://vmnebula.com`,
-    logo:`./img/logos/recruit41.webp`,
+    logo:`/osama-amin-portfolio/img/logos/recruit41.webp`,
     title:`Founder & Chief Architect`,
     period:`2024 - Present`,
     location:`vmnebula.com`,
@@ -54,7 +54,7 @@ i=[
       {
         name:`Sarkit`,
         href:`https://sarkit.vmnebula.com`,
-        logo:`./img/logos/atomicwork.png`,
+        logo:`/osama-amin-portfolio/img/logos/atomicwork.png`,
         summary:`Voice-first, WhatsApp-native commerce software converting local-language speech and supplier invoices into structured ledger records.`,
         impact:[
           {label:`Voice to Ledger`,text:`Turns natural spoken sales and handwritten supplier bills into structured inventory and accounting entries.`}
@@ -63,7 +63,7 @@ i=[
       {
         name:`Bulk AI Studio`,
         href:`https://workspace.google.com/marketplace/app/bulk_ai_studio/323643388682`,
-        logo:`./img/logos/spotdraft.png`,
+        logo:`/osama-amin-portfolio/img/logos/spotdraft.png`,
         summary:`Published Google Workspace Marketplace app for batch translation, classification, extraction, and web-grounded enrichment inside Google Sheets.`,
         impact:[
           {label:`Google Workspace Marketplace`,text:`Asynchronous batch processing with verified source citations attached to web-derived answers.`}
@@ -74,7 +74,7 @@ i=[
   {
     company:`Open Source Contributions`,
     href:`https://github.com/Vmnebula`,
-    logo:`./img/logos/think41.svg`,
+    logo:`/osama-amin-portfolio/img/logos/think41.svg`,
     title:`Open Source Contributor (Redis, CrewAI & Python Ecosystem)`,
     period:`2025 - Present`,
     location:`Global Open Source`,
@@ -87,7 +87,7 @@ i=[
   {
     company:`NayaCloud & Amin Technologies`,
     href:`https://nayacloud.com`,
-    logo:`./img/logos/nokia.svg`,
+    logo:`/osama-amin-portfolio/img/logos/nokia.svg`,
     title:`Founder & Cloud Operations Lead`,
     period:`2020 - Present`,
     location:`UAE · UK · International`,
@@ -124,7 +124,7 @@ s=[
       `Built-in spending limits and live cost visibility`
     ],
     stack:[`Cloud Infrastructure`,`Containers`,`AI Agents`],
-    shot:`./img/projects/whisprcatch.jpg`,
+    shot:`/osama-amin-portfolio/img/projects/whisprcatch.jpg`,
     live:`https://vmnebula.com`,
     repo:`https://github.com/Vmnebula`
   },
@@ -140,7 +140,7 @@ s=[
       `Designed for fast everyday retail and wholesale operations`
     ],
     stack:[`Voice to Ledger`,`Document Vision`,`Cloud Sync`],
-    shot:`./img/projects/daytrail.jpg`,
+    shot:`/osama-amin-portfolio/img/projects/daytrail.jpg`,
     live:`https://sarkit.vmnebula.com`,
     repo:`https://github.com/Vmnebula`
   },
@@ -156,7 +156,7 @@ s=[
       `Attaches verified source citations to web-derived answers`
     ],
     stack:[`Google Sheets`,`Batch Processing`,`Source Citations`],
-    shot:`./img/projects/agentconf.jpg`,
+    shot:`/osama-amin-portfolio/img/projects/agentconf.jpg`,
     live:`https://workspace.google.com/marketplace/app/bulk_ai_studio/323643388682`,
     repo:`https://github.com/Vmnebula`
   },
@@ -172,7 +172,7 @@ s=[
       `Open-source and self-hostable`
     ],
     stack:[`Cost Intelligence`,`Real-Time Metering`,`Open Source`],
-    shot:`./img/projects/dayblocks.jpg`,
+    shot:`/osama-amin-portfolio/img/projects/dayblocks.jpg`,
     live:`https://github.com/Vmnebula/substacker`,
     repo:`https://github.com/Vmnebula/substacker`
   },
@@ -188,7 +188,7 @@ s=[
       `Built for clarity, speed, and practical daily use`
     ],
     stack:[`Web Applications`,`Financial Tools`,`Spreadsheets`],
-    shot:`./img/projects/chaoslab.jpg`,
+    shot:`/osama-amin-portfolio/img/projects/chaoslab.jpg`,
     live:`https://vorlagen-direkt.com`,
     repo:`https://github.com/Vmnebula`
   }

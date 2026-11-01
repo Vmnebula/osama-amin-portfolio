@@ -1,11 +1,11 @@
 const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/hero-ehW614zh.js","assets/style-B1EuKJHw.js","assets/style-DFl1rBR5.css"])))=>i.map(i=>d[i]);
 import"./data--RBObi_u.js";import{C as e,a as t,c as n,d as r,f as i,l as a,m as o,p as s,s as c,u as l}from"./style-B1EuKJHw.js";import{d as u,f as d,h as f,i as p,m,p as ee,s as h,u as g}from"./panels-l7jsdnbo.js";import{i as _,n as v,r as te}from"./shortcuts-B_DxV9r7.js";import{t as ne}from"./web-CVIvqvZ7.js";var re=`Muhammad Osama Amin`,ie=`My two cents, on the internet.`,y=e=>e.replace(/[&<>"]/g,e=>({"&":`&amp;`,"<":`&lt;`,">":`&gt;`,'"':`&quot;`})[e]),ae=e=>new Date(`${e}T00:00:00Z`).toLocaleDateString(`en-GB`,{day:`numeric`,month:`short`,year:`numeric`,timeZone:`UTC`}),oe=e=>`<header class="bar">
-      <a class="back" href="${e===`post`?`/blog`:`/`}" aria-label="${e===`post`?`Back to all posts`:`Back to home`}"><span class="acc">←</span> BACK</a>
+      <a class="back" href="/osama-amin-portfolio${e===`post`?`/blog`:`/`}" aria-label="${e===`post`?`Back to all posts`:`Back to home`}"><span class="acc">←</span> BACK</a>
       <nav class="nav" aria-label="Pages">
-        <a href="/work" data-n="${u(`/work`)}" data-name="WORK"><span class="acc">[${u(`/work`)}]</span> WORK</a>
-        <a href="/contact" data-n="${u(`/contact`)}" data-name="CONTACT"><span class="acc">[${u(`/contact`)}]</span> CONTACT</a>
-        <a href="/blog" data-n="${u(`/blog`)}" data-name="JOURNAL" class="on"${e===`blog`?` aria-current="page"`:``}><span class="acc">[${u(`/blog`)}]</span> JOURNAL</a>
-        <a href="/side-quests" data-n="${u(`/side-quests`)}" data-name="SIDE QUESTS"><span class="acc">[${u(`/side-quests`)}]</span> SIDE QUESTS</a>
+        <a href="/osama-amin-portfolio/work" data-n="${u(`/work`)}" data-name="WORK"><span class="acc">[${u(`/work`)}]</span> WORK</a>
+        <a href="/osama-amin-portfolio/contact" data-n="${u(`/contact`)}" data-name="CONTACT"><span class="acc">[${u(`/contact`)}]</span> CONTACT</a>
+        <a href="/osama-amin-portfolio/blog" data-n="${u(`/blog`)}" data-name="JOURNAL" class="on"${e===`blog`?` aria-current="page"`:``}><span class="acc">[${u(`/blog`)}]</span> JOURNAL</a>
+        <a href="/osama-amin-portfolio/side-quests" data-n="${u(`/side-quests`)}" data-name="SIDE QUESTS"><span class="acc">[${u(`/side-quests`)}]</span> SIDE QUESTS</a>
       </nav>
     </header>`,se=`<svg class="pill-icon" viewBox="0 0 22 16" width="22" height="16" aria-hidden="true">${[2,8,14].map(e=>`<circle cx="2" cy="${e}" r="1.7" class="b"/>${[7,10,13,16,19].map(t=>`<circle cx="${t}" cy="${e}" r="1.05"/>`).join(``)}`).join(``)}</svg>`;function ce(e){return`<ol>${e.filter(e=>e.level===2).map((e,t)=>`<li><a href="#${e.id}" data-toc="${e.id}"><span class="toc-n">${String(t+1).padStart(2,`0`)}</span>${y(e.text)}</a></li>`).join(``)}</ol>`}function le(e){let t=e.hero?`/blog/${e.slug}/${e.hero}`:void 0,n=[ae(e.date).toUpperCase(),`${e.minutes} MIN READ`].join(` · `);return`${oe(`post`)}
     <main class="post">
@@ -34,11 +34,11 @@ import"./data--RBObi_u.js";import{C as e,a as t,c as n,d as r,f as i,l as a,m as
             <div class="hero-stage" data-hero="${y(e.slug)}"><img src="${t}" alt="${y(e.heroAlt??``)}" width="1600" height="840" /></div>
           </figure>`:``}
 ${e.html}
-          <p class="end"><a href="/blog"><span class="acc">←</span> All posts</a></p>
+          <p class="end"><a href="/osama-amin-portfolio/blog"><span class="acc">←</span> All posts</a></p>
         </article>
       </div>
     </main>`}function ue(e){let t=e.map((t,n)=>`<li>
-          <a class="entry" href="/blog/${t.slug}">
+          <a class="entry" href="/osama-amin-portfolio/blog/${t.slug}">
             <span class="entry-n">[${String(e.length-n).padStart(2,`0`)}]</span>
             <span class="entry-main">
               <span class="entry-title">${y(t.title)}</span>
