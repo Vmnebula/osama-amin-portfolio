@@ -1,0 +1,11 @@
+{
+  "slug": "redis-open-source-async-cluster",
+  "title": "Contributing to Redis: Async cluster reliability in production",
+  "description": "Lessons from diagnosing and resolving async event-loop connection lifecycle edge cases in Redis cluster pipelines.",
+  "date": "2026-10-24",
+  "hero": "hero.png",
+  "heroAlt": "Async Redis cluster pipeline connection lifecycle architecture.",
+  "kicker": "OPEN SOURCE \u00b7 REDIS",
+  "minutes": 5,
+  "html": "<p>High-throughput cloud platforms rely on Redis for low-latency state, queuing, and real-time metering. When operating async Redis clusters under concurrent workloads, subtle event-loop lifecycle edge cases can surface during pipeline initialization and key-slot resolution.</p><h2>Giving Back to Core Infrastructure</h2><p>As an open-source contributor to <strong>redis-py</strong>, my focus has been ensuring that async cluster transactions isolate temporary resolution sockets cleanly and maintain rock-solid connection pool invariants across concurrent tasks.</p>"
+}

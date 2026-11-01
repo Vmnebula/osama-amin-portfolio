@@ -1,14 +1,13 @@
-(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();
-var e={
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),t.credentials=e.crossOrigin===`use-credentials`?`include`:e.crossOrigin===`anonymous`?`omit`:`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})();var e={
   name:`Muhammad Osama Amin`,
-  first:`Osama`,
-  role:`Applied AI & Cloud Architect · Founder`,
-  tagline:`Founder at VM Nebula & NayaCloud (DIFC). Official Redis Contributor.`,
-  blurb:`I ship production AI runtimes, multi-tenant cloud infrastructure, and multimodal voice systems—engineered and verified under real load.`,
-  email:`osamaaminemail@gmail.com`,
-  phone:`+92 310 5035067`,
-  phoneAlt:`muhammad.osama@vmnebula.com`,
-  location:`Islamabad, PK · Dubai, UAE (DIFC)`,
+  first:`Muhammad`,
+  role:`Founder & AI Cloud Architect`,
+  tagline:`Founder at VM Nebula · Open Source Contributor`,
+  blurb:`I turn complex cloud infrastructure into practical products—building dedicated cloud computers and spend guardrails for autonomous AI agents at VM Nebula.`,
+  email:`muhammad.osama@vmnebula.com`,
+  phone:``,
+  phoneAlt:``,
+  location:`Dubai, UAE · Islamabad, PK`,
   timeZone:`Asia/Karachi`,
   careerStart:`2020-01-01T00:00:00Z`,
   resume:`https://vmnebula.github.io/osama-amin-portfolio/Muhammad_Osama_Amin_CV_Tech.pdf`,
@@ -22,188 +21,179 @@ t=[
   {text:`servus`,label:`German`}
 ],
 n=[
-  `Scaling [VM Nebula](https://vmnebula.com) (ElevenLabs Grant awardee), piloting [Sarkit](https://sarkit.vmnebula.com) across 136 suppliers, and shipping async cluster fixes to [redis/redis-py](https://github.com/redis/redis-py/pulls?q=is%3Apr+author%3AVmnebula) with [Gemini 3.8 Live](https://ai.google.dev).`
+  `Building [VM Nebula](https://vmnebula.com) — the 1-click cloud computer for autonomous AI agents with built-in spending limits — and contributing to open-source projects including [Redis](https://github.com/redis/redis-py) and [CrewAI](https://github.com/crewAIInc/crewAI).`
 ],
 r=[
-  {name:`Python`,slug:`python`,note:`core systems & Redis PRs`},
-  {name:`TypeScript`,slug:`typescript`,note:`every frontend & agent SDK`},
-  {name:`FastAPI`,slug:`fastapi`,note:`high-throughput AI gateways`},
-  {name:`Django`,slug:`django`,note:`enterprise & ERP backends`},
-  {name:`React`,slug:`react`,note:`interactive consoles`},
-  {name:`Next.js`,slug:`nextdotjs`,note:`NayaCloud & SaaS portals`},
-  {name:`LangChain`,slug:`langchain`,note:`production RAG & tool loops`},
-  {name:`LangGraph`,slug:`langgraph`,note:`stateful multi-agent graphs`},
-  {name:`Google ADK`,slug:`google`,note:`Vertex AI & Workspace apps`},
-  {name:`Gemini 3.8`,slug:`googlegemini`,note:`powers this live voice call`},
-  {name:`LiveKit`,slug:`livekit`,note:`real-time WebRTC voice`},
-  {name:`Pipecat`,slug:`pipecat`,note:`low-latency audio pipelines`},
-  {name:`Deepgram`,slug:`deepgram`,note:`streaming speech-to-text`},
-  {name:`PostgreSQL`,slug:`postgresql`,note:`multi-tenant ledger store`},
-  {name:`MongoDB`,slug:`mongodb`,note:`document & telemetry store`},
-  {name:`BigQuery`,slug:`googlebigquery`,note:`analytics & FinOps metering`},
-  {name:`Docker`,slug:`docker`,note:`isolated agent Orbits`},
-  {name:`Kubernetes`,slug:`kubernetes`,note:`multi-cloud orchestration`},
-  {name:`Google Cloud`,slug:`googlecloud`,note:`Cloud Run, Vertex & GKE`},
-  {name:`Claude Code`,slug:`claude`,note:`autonomous pair engineer`}
+  {name:`Python`,slug:`python`,note:`daily driver`},
+  {name:`TypeScript`,slug:`typescript`,note:`the other daily driver`},
+  {name:`FastAPI`,slug:`fastapi`,note:`production APIs`},
+  {name:`React`,slug:`react`,note:`web interfaces`},
+  {name:`Next.js`,slug:`nextdotjs`,note:`product portals`},
+  {name:`Docker`,slug:`docker`,note:`isolated runtimes`},
+  {name:`Kubernetes`,slug:`kubernetes`,note:`cluster orchestration`},
+  {name:`PostgreSQL`,slug:`postgresql`,note:`primary data store`},
+  {name:`Google Cloud`,slug:`googlecloud`,note:`cloud infrastructure`},
+  {name:`LangChain`,slug:`langchain`,note:`agent workflows`},
+  {name:`LangGraph`,slug:`langgraph`,note:`stateful orchestration`},
+  {name:`Django`,slug:`django`,note:`business systems`}
 ],
 i=[
   {
-    company:`VM Nebula & NayaCloud (DIFC)`,
+    company:`VM Nebula`,
     href:`https://vmnebula.com`,
     logo:`./img/logos/recruit41.webp`,
-    title:`Founder & Chief Cloud/AI Architect`,
-    period:`Aug 2024 - Present`,
-    location:`Dubai, UAE (DIFC) & Islamabad, PK`,
-    summary:`Managed 24/7 cloud runtime for autonomous AI agents (Orbits, Pulsar metering, Stasis circuit breakers) & DIFC Innovation Hub entity (Licence CL11486).`,
+    title:`Founder & Chief Architect`,
+    period:`2024 - Present`,
+    location:`vmnebula.com`,
+    summary:`The agent cloud with a spending limit. Dedicated cloud computers for autonomous AI agents with 1-click deployment, persistent storage, and strict cost guardrails.`,
     impact:[
-      {label:`Isolated Agent Orbits`,stat:`87% cost reduction`,text:`Engineered container-isolated agent runtimes across GCP & Azure AI Foundry with real-time token circuit breakers.`},
-      {label:`Ecosystem & Backing`,stat:`$50K angel + grants`,text:`Awarded ElevenLabs Startup Grant, SOSV Orbit Startups, NIC Peshawar, and Top 30 Finalist at 13th Wafi Tameer Awards.`}
+      {label:`1-Click Agent Cloud`,stat:`Instant deploy`,text:`Deploy OpenClaw, Agent Zero, n8n, and custom AI agents on dedicated cloud VMs with persistent memory and storage.`},
+      {label:`Built-In Spend Limits`,stat:`Zero bill shock`,text:`Real-time usage metering and hard spending caps that keep 24/7 autonomous agents within budget.`}
     ],
     clients:[
       {
-        name:`Sarkit Voice & Vision ERP`,
+        name:`Sarkit`,
         href:`https://sarkit.vmnebula.com`,
         logo:`./img/logos/atomicwork.png`,
-        summary:`Multimodal Urdu/Pashto speech & handwritten invoice vision platform for informal retail supply chains (Ignite SPARK-2026-1314).`,
+        summary:`Voice-first, WhatsApp-native commerce software converting local-language speech and supplier invoices into structured ledger records.`,
         impact:[
-          {label:`Live Mardan Bazaar Pilot`,stat:`1,113 SKUs · 136 suppliers`,text:`Deployed across 16 retail/wholesale categories with voice-to-ledger billing and offline-first sync.`},
-          {label:`Multimodal Vision & Speech`,text:`Extracts line items from handwritten Urdu/English supplier bills and voice notes in seconds.`}
+          {label:`Voice to Ledger`,text:`Turns natural spoken sales and handwritten supplier bills into structured inventory and accounting entries.`}
         ]
       },
       {
-        name:`Vorlagen Direkt (Germany)`,
-        href:`https://vorlagen-direkt.com`,
+        name:`Bulk AI Studio`,
+        href:`https://workspace.google.com/marketplace/app/bulk_ai_studio/323643388682`,
         logo:`./img/logos/spotdraft.png`,
-        summary:`German-first interactive client-side calculators (ArbZG, DIN 276, Nebenkosten, EÜR) and verified blank workbooks.`,
+        summary:`Published Google Workspace Marketplace app for batch translation, classification, extraction, and web-grounded enrichment inside Google Sheets.`,
         impact:[
-          {label:`Organic Search Growth`,stat:`4,350+ monthly imp`,text:`Built zero-backend interactive German compliance aids and automated XLSX/ODS workbook generators.`}
+          {label:`Google Workspace Marketplace`,text:`Asynchronous batch processing with verified source citations attached to web-derived answers.`}
         ]
       }
     ]
   },
   {
-    company:`Open Source & Core AI Infrastructure`,
+    company:`Open Source Contributions`,
     href:`https://github.com/Vmnebula`,
     logo:`./img/logos/think41.svg`,
-    title:`Official Merged Contributor (Redis, CrewAI, aiohttp)`,
+    title:`Open Source Contributor (Redis, CrewAI & Python Ecosystem)`,
     period:`2025 - Present`,
     location:`Global Open Source`,
-    summary:`Resolving deep async event-loop, cluster transaction, and concurrency bugs in foundational Python data & agent libraries.`,
+    summary:`Contributing reliability, async networking, and concurrency improvements to foundational open-source data and AI libraries.`,
     impact:[
-      {label:`redis/redis-py (#4513 & #4537)`,stat:`2 PRs merged to master`,text:`Fixed cross-loop socket reuse and movablekeys parser connection leaks in async RedisCluster transaction pipelines.`},
-      {label:`Agent & Async Ecosystem`,stat:`crewAI · aiohttp · litellm`,text:`Shipped thread-safe Flow state snapshotting (#8750), LRU cache fixes (#8551), and WebSocket heartbeat guards (#14126).`}
+      {label:`Redis (redis-py)`,stat:`Merged contributor`,text:`Resolved async cluster transaction and event-loop connection reliability issues in the official Redis Python client.`},
+      {label:`AI & Async Ecosystem`,stat:`Core libraries`,text:`Contributed concurrency, caching, and WebSocket reliability improvements across open-source Python frameworks.`}
     ]
   },
   {
-    company:`Amin Technologies Ltd (UK) & HDPO`,
+    company:`NayaCloud & Amin Technologies`,
     href:`https://nayacloud.com`,
     logo:`./img/logos/nokia.svg`,
-    title:`Cloud Operations Lead & Solutions Architect`,
-    period:`Aug 2022 - Present`,
-    location:`London, UK · Remote`,
-    summary:`Led 150+ production cloud, Kubernetes, and applied AI deployments for clients across the Gulf, UK, US, and Africa.`,
+    title:`Founder & Cloud Operations Lead`,
+    period:`2020 - Present`,
+    location:`UAE · UK · International`,
+    summary:`Hands-on cloud architecture, platform engineering, and full-stack product delivery for clients across the Gulf, UK, US, and international markets.`,
     impact:[
-      {label:`Multi-Cloud FinOps & Infra`,stat:`150+ deployments`,text:`Architected multi-tenant AWS, GCP, and Azure AI Foundry estates with 15M+ TPM enterprise quotas and automated CI/CD.`},
-      {label:`Enterprise & NGO Platforms`,stat:`99.9% uptime`,text:`Delivered production ERP, voice automation, and cloud security operations across 4 continents.`}
+      {label:`Cloud & Platform Engineering`,stat:`End-to-end delivery`,text:`Architected multi-cloud infrastructure, enterprise virtual desktops, networking, backup systems, and automated CI/CD.`},
+      {label:`Recognition & Ecosystem`,stat:`Top 30 Finalist`,text:`Shortlisted among the Top 30 finalists of the 13th Wafi Tameer Awards 2026; NIC Peshawar & Orbit Startups alumni; featured on BBC Pashto.`}
     ]
   }
 ],
 a=[
-  {label:`Shipping`,value:`redis-py & VM Nebula`,detail:`async cluster internals & agent Orbits`,more:`2 PRs merged into official Redis this week`,href:`https://github.com/redis/redis-py/pulls?q=is%3Apr+author%3AVmnebula`},
-  {label:`Building`,value:`Sarkit Voice ERP`,detail:`Urdu & Pashto speech-to-ledger`,more:`live across 1,113 SKUs in Mardan Bazaar`,href:`https://sarkit.vmnebula.com`},
-  {label:`Running`,value:`NayaCloud DIFC`,detail:`Dubai International Financial Centre`,more:`Commercial Licence CL11486`,href:`https://nayacloud.com`},
-  {label:`Next Up`,value:`Forbes 30U30 Track`,detail:`scaling sovereign & private AI infra`,more:`from Pakistan & UAE to global production`}
+  {label:`Flagship`,value:`VM Nebula`,detail:`A computer for your AI agent`,more:`1-click cloud with hard spending limits`,href:`https://vmnebula.com`},
+  {label:`Open Source`,value:`Redis Contributor`,detail:`Async cluster & systems reliability`,more:`merged contributor in core Python libraries`,href:`https://github.com/Vmnebula`},
+  {label:`Recognition`,value:`Wafi Tameer Awards`,detail:`Top 30 Finalist (2026)`,more:`NIC Peshawar & Orbit Startups alumni`},
+  {label:`Media`,value:`BBC Pashto Feature`,detail:`Cloud & AI engineering spotlight`,more:`watch the original broadcast feature`,href:`https://www.youtube.com/watch?v=TggCy1vVewI`}
 ],
 o={
-  "VM Nebula":{itch:`AI agents die on laptops or burn $2,000 overnight.`,built:`24/7 isolated Agent Orbits with sub-minute circuit breakers.`},
-  Sarkit:{itch:`Informal retailers won't type into complex ERPs.`,built:`Speak Urdu/Pashto or snap a handwritten bill—stock updates live.`},
-  "Bulk AI Studio":{itch:`Copy-pasting 5,000 spreadsheet rows into ChatGPT.`,built:`A Google Workspace add-on that runs Gemini/OpenAI/Claude in bulk.`},
-  Substacker:{itch:`Turning deep research into polished essays & audio takes hours.`,built:`An AI publishing studio with ElevenLabs voice synthesis.`},
-  "Vorlagen Direkt":{itch:`German SMB templates hide behind paywalls and broken formulas.`,built:`Verified client-side calculators and clean XLSX/ODS workbooks.`}
+  "VM Nebula":{itch:`AI agents die on laptops or cause surprise cloud bills.`,built:`Dedicated cloud VMs for AI agents with hard spending limits.`},
+  Sarkit:{itch:`Merchants do not want to type into complex ERPs.`,built:`Voice-first software that turns speech and bills into ledger entries.`},
+  "Bulk AI Studio":{itch:`Running prompts row by row in spreadsheets is slow.`,built:`A published Google Workspace app for batch AI in Google Sheets.`},
+  Substacker:{itch:`Teams lose track of AI spend across providers.`,built:`Open-source cost attribution, live reporting, and budget controls.`},
+  "Vorlagen Direkt":{itch:`Business templates often hide behind paywalls.`,built:`Fast browser calculators and formula-verified workbooks.`}
 },
 s=[
   {
     name:`VM Nebula`,
-    kind:`Managed AI Agent Cloud`,
+    kind:`Cloud Platform for AI Agents`,
     year:`2026`,
-    hook:`Deploy private AI agents in 60 seconds.`,
-    blurb:`Container-isolated Orbits for n8n, OpenWebUI, Agent Zero, Flowise, Ollama, and vLLM. Built-in Pulsar token metering, Horizon 85% warnings, and Stasis 100% hard circuit breakers.`,
+    hook:`A computer for your AI agent.`,
+    blurb:`Deploy OpenClaw, Agent Zero, or n8n in 1 click on dedicated cloud VMs with persistent storage and strict AI spend controls.`,
     points:[
-      `87% lower unit infrastructure cost vs legacy cloud setups`,
-      `Backed by the ElevenLabs Startup Grant & SOSV Orbit Startups`,
-      `Sub-minute budget guards across GCP & Azure AI Foundry`
+      `Dedicated cloud environments with persistent memory and storage`,
+      `1-click templates for OpenClaw, Agent Zero, n8n, and custom agents`,
+      `Built-in spending limits and live cost visibility`
     ],
-    stack:[`TypeScript`,`Python`,`Docker`,`Google Cloud`,`Azure AI`],
+    stack:[`Cloud Infrastructure`,`Containers`,`AI Agents`],
     shot:`./img/projects/whisprcatch.jpg`,
     live:`https://vmnebula.com`,
     repo:`https://github.com/Vmnebula`
   },
   {
     name:`Sarkit`,
-    kind:`Multimodal Voice & Vision ERP`,
+    kind:`Retail & Applied AI`,
     year:`2026`,
-    hook:`You speak Urdu or Pashto. It runs the ledger.`,
-    blurb:`Built for wholesale and retail supply chains. Speak a sale in Urdu or Pashto or snap a photo of a handwritten supplier invoice—Sarkit updates inventory, khata credit, and margins automatically.`,
+    hook:`Speak your sale. It updates the ledger.`,
+    blurb:`A voice-first, WhatsApp-native retail system for merchants. Converts local-language speech and supplier invoices into structured inventory and accounting records.`,
     points:[
-      `Live field pilot: 1,113 SKUs and 136 suppliers in Mardan Bazaar`,
-      `Handles code-switched Urdu, Pashto, and English trade vocabulary`,
-      `Offline-first Android & Web POS with real-time cloud sync`
+      `Voice-to-ledger workflows in natural local languages`,
+      `Automated line-item extraction from supplier invoices`,
+      `Designed for fast everyday retail and wholesale operations`
     ],
-    stack:[`React`,`FastAPI`,`Gemini Vision`,`ElevenLabs`,`PostgreSQL`],
+    stack:[`Voice to Ledger`,`Document Vision`,`Cloud Sync`],
     shot:`./img/projects/daytrail.jpg`,
     live:`https://sarkit.vmnebula.com`,
     repo:`https://github.com/Vmnebula`
   },
   {
     name:`Bulk AI Studio`,
-    kind:`Google Workspace Marketplace App`,
+    kind:`Published Workspace App`,
     year:`2026`,
-    hook:`Run LLMs across 10,000 Sheet rows at once.`,
-    blurb:`Approved and published on the official Google Workspace Marketplace (App ID 323643388682). Connect Gemini, OpenAI, Claude, or Grok directly inside Google Sheets with batch retry and cost controls.`,
+    hook:`AI workflows inside Google Sheets.`,
+    blurb:`Published on the Google Workspace Marketplace. Run translation, classification, structured extraction, and web-grounded enrichment across thousands of spreadsheet rows.`,
     points:[
-      `Published on Google Workspace Marketplace (ID: 323643388682)`,
-      `Multi-provider routing across Gemini, GPT, Claude & DeepSeek`,
-      `Zero-code formula & batch sidebar execution`
+      `Published on the official Google Workspace Marketplace`,
+      `Asynchronous batch processing for large spreadsheets`,
+      `Attaches verified source citations to web-derived answers`
     ],
-    stack:[`TypeScript`,`Apps Script`,`Google Cloud Run`,`Gemini`],
+    stack:[`Google Sheets`,`Batch Processing`,`Source Citations`],
     shot:`./img/projects/agentconf.jpg`,
     live:`https://workspace.google.com/marketplace/app/bulk_ai_studio/323643388682`,
     repo:`https://github.com/Vmnebula`
   },
   {
     name:`Substacker`,
-    kind:`AI Publishing & Voice Studio`,
+    kind:`Open-Source FinOps`,
     year:`2026`,
-    hook:`From raw technical notes to published essay + audio.`,
-    blurb:`Turns rough engineering notes and research threads into structured long-form newsletters, complete with automated fact verification and ElevenLabs neural audio narration.`,
+    hook:`AI cost attribution across providers.`,
+    blurb:`Tracks AI usage by team and workflow with live reporting, budget guardrails, and anomaly detection so engineering teams stay in control of spend.`,
     points:[
-      `Integrated ElevenLabs Startup Grant voice synthesis`,
-      `Side-by-side research citation & draft editor`,
-      `Live in production at substacker.vmnebula.com`
+      `Unified cost attribution across providers and teams`,
+      `Live budget controls and anomaly detection`,
+      `Open-source and self-hostable`
     ],
-    stack:[`Next.js`,`Python`,`ElevenLabs`,`Gemini 3.8`],
+    stack:[`Cost Intelligence`,`Real-Time Metering`,`Open Source`],
     shot:`./img/projects/dayblocks.jpg`,
-    live:`https://substacker.vmnebula.com`,
-    repo:`https://github.com/Vmnebula`
+    live:`https://github.com/Vmnebula/substacker`,
+    repo:`https://github.com/Vmnebula/substacker`
   },
   {
     name:`Vorlagen Direkt`,
-    kind:`German FinOps & Compliance Portal`,
+    kind:`Business Tools & Templates`,
     year:`2026`,
-    hook:`Instant German business calculators & clean workbooks.`,
-    blurb:`High-speed Astro portal serving interactive German ArbZG shift planners, DIN 276 construction cost estimators, Nebenkosten calculators, and formula-verified XLSX/ODS downloads.`,
+    hook:`Interactive business calculators and clean workbooks.`,
+    blurb:`Fast browser-based financial and operational calculators paired with clean, formula-verified spreadsheet templates for small businesses.`,
     points:[
-      `56 static pages + client-side calculators with 0ms server lag`,
-      `4,350+ monthly Google Search impressions across DACH`,
-      `Automated openpyxl/odfpy workbook generation & verification`
+      `Instant client-side calculators with zero server lag`,
+      `Formula-verified Excel and OpenDocument workbooks`,
+      `Built for clarity, speed, and practical daily use`
     ],
-    stack:[`Astro`,`TypeScript`,`Python`,`OpenPyXL`],
+    stack:[`Web Applications`,`Financial Tools`,`Spreadsheets`],
     shot:`./img/projects/chaoslab.jpg`,
     live:`https://vorlagen-direkt.com`,
     repo:`https://github.com/Vmnebula`
   }
 ],
-c={now:`Right now.`,work:`Ventures & engineering.`,stack:`Daily drivers.`,github:`Proof of work.`,off:`Highlights & milestones.`,contact:`Say hello.`,quests:`Products shipped to production.`},
+c={now:`Right now.`,work:`Selected work & experience.`,stack:`Core toolkit.`,github:`Proof of work.`,off:`Highlights & recognition.`,contact:`Say hello.`,quests:`Shipped products.`},
 l=structuredClone({profile:e,greetings:t,currently:n,techStack:r,experience:i,offbeat:a,projects:s,titles:c}),
 u=()=>structuredClone(l);
 function d(e,t){let n=(e,t)=>{Array.isArray(t)&&t.length&&e.splice(0,e.length,...t)};if(t.profile&&Object.assign(e.profile,t.profile),t.titles)for(let[n,r]of Object.entries(t.titles))r&&(e.titles[n]=r);n(e.greetings,t.greetings),n(e.currently,t.currently),n(e.techStack,t.techStack),n(e.experience,t.experience),n(e.offbeat,t.offbeat),n(e.projects,t.projects)}

@@ -1,32 +1,32 @@
 [
   {
-    "slug": "redis-async-cluster-transactions",
-    "title": "Fixing cross-loop socket reuse in Redis async cluster transactions",
-    "description": "How we diagnosed and fixed two subtle asyncio event-loop bugs (#4513 & #4537) in redis/redis-py when queuing lazy and movablekeys commands on ClusterPipeline.",
+    "slug": "vmnebula-agent-cloud-with-spending-limit",
+    "title": "Why every autonomous AI agent needs its own computer and a spending limit",
+    "description": "Autonomous agents need persistent storage, dedicated compute, and hard budget guardrails. Here is how we built VM Nebula for 1-click production deployment.",
     "date": "2026-10-30",
     "hero": "hero.png",
-    "heroAlt": "Diagram of async RedisCluster pipeline isolating worker-thread event loop sockets from caller loop pools.",
+    "heroAlt": "VM Nebula dedicated cloud computer for AI agents with built-in spend controls.",
+    "kicker": "PRODUCT \u00b7 VM NEBULA",
+    "minutes": 5
+  },
+  {
+    "slug": "redis-open-source-async-cluster",
+    "title": "Contributing to Redis: Async cluster reliability in production",
+    "description": "Lessons from diagnosing and resolving async event-loop connection lifecycle edge cases in Redis cluster pipelines.",
+    "date": "2026-10-24",
+    "hero": "hero.png",
+    "heroAlt": "Async Redis cluster pipeline connection lifecycle architecture.",
     "kicker": "OPEN SOURCE \u00b7 REDIS",
     "minutes": 5
   },
   {
-    "slug": "vmnebula-agent-orbits-finops",
-    "title": "Cutting AI agent cloud costs by 87% with isolated Orbits & sub-minute circuit breakers",
-    "description": "Why autonomous agents burn runaway cloud budgets, and how VM Nebula enforces Pulsar metering and 60-second Stasis cutoffs across GCP and Azure AI Foundry.",
-    "date": "2026-10-25",
+    "slug": "voice-first-business-software",
+    "title": "Designing voice-first software for everyday commerce",
+    "description": "How natural-language voice and document vision replace complex data-entry screens for fast-moving retail and wholesale merchants.",
+    "date": "2026-10-15",
     "hero": "hero.png",
-    "heroAlt": "VM Nebula Orbit architecture with Pulsar metering and Stasis circuit breaker.",
-    "kicker": "ARCHITECTURE \u00b7 VM NEBULA",
-    "minutes": 6
-  },
-  {
-    "slug": "sarkit-urdu-pashto-voice-erp",
-    "title": "Building a multimodal Urdu & Pashto voice ERP for 1,113 SKUs in Mardan Bazaar",
-    "description": "Shopkeepers in informal supply chains do not type into ERPs. How we combined Urdu/Pashto speech recognition and handwritten invoice vision in Sarkit.",
-    "date": "2026-10-18",
-    "hero": "hero.png",
-    "heroAlt": "Sarkit voice-to-ledger and handwritten bill OCR pipeline.",
-    "kicker": "FIELD PILOT \u00b7 SARKIT",
-    "minutes": 5
+    "heroAlt": "Sarkit voice-to-ledger workflow for everyday commerce.",
+    "kicker": "APPLIED AI \u00b7 SARKIT",
+    "minutes": 4
   }
 ]

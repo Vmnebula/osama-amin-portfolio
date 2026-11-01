@@ -1,7 +1,21 @@
 # Muhammad Osama Amin
-> Applied AI & Cloud Architect · Founder of VM Nebula & NayaCloud Technologies Ltd (DIFC) · Official Redis Contributor.
-- Email: osamaaminemail@gmail.com / muhammad.osama@vmnebula.com
-- Phone / WhatsApp: +92 310 5035067
-- GitHub: https://github.com/Vmnebula
+> Founder at VM Nebula (https://vmnebula.com) · Applied AI & Cloud Architect · Open Source Contributor to Redis.
+
+## Flagship Product — VM Nebula (https://vmnebula.com)
+- The agent cloud with a spending limit: a dedicated cloud computer for autonomous AI agents.
+- 1-click deployment for OpenClaw, Agent Zero, n8n, and custom AI workflows with persistent storage and built-in spend controls.
+
+## Selected Products & Ventures
+- VM Nebula: https://vmnebula.com
+- NayaCloud: https://nayacloud.com
+- Sarkit: https://sarkit.vmnebula.com
+- Bulk AI Studio: https://workspace.google.com/marketplace/app/bulk_ai_studio/323643388682
+- Vorlagen Direkt: https://vorlagen-direkt.com
+
+## Open Source
+- Official merged contributor to Redis (redis/redis-py) and active contributor across the Python AI and async ecosystem.
+
+## Contact
+- Email: muhammad.osama@vmnebula.com
 - LinkedIn: https://www.linkedin.com/in/muhammad-osama-amin/
-- Resume PDF: https://vmnebula.github.io/osama-amin-portfolio/Muhammad_Osama_Amin_CV_Tech.pdf
+- GitHub: https://github.com/Vmnebula

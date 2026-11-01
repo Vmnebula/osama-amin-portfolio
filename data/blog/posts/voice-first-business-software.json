@@ -1,0 +1,11 @@
+{
+  "slug": "voice-first-business-software",
+  "title": "Designing voice-first software for everyday commerce",
+  "description": "How natural-language voice and document vision replace complex data-entry screens for fast-moving retail and wholesale merchants.",
+  "date": "2026-10-15",
+  "hero": "hero.png",
+  "heroAlt": "Sarkit voice-to-ledger workflow for everyday commerce.",
+  "kicker": "APPLIED AI \u00b7 SARKIT",
+  "minutes": 4,
+  "html": "<p>Traditional ERP software assumes every merchant has time to sit at a keyboard and type structured SKU rows. In fast-moving retail and wholesale markets, that assumption fails.</p><h2>Voice and Vision as the Primary Interface</h2><p>With <strong><a href='https://sarkit.vmnebula.com'>Sarkit</a></strong>, merchants simply speak a transaction in their natural language or snap a photo of a supplier invoice. The platform extracts line items, matches products, and updates the ledger automatically.</p>"
+}
