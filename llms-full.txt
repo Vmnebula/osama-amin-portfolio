@@ -1,5 +1,5 @@
 # Muhammad Osama Amin
-> Founder at VM Nebula (https://vmnebula.com) · Applied AI & Cloud Architect · Open Source Contributor to Redis.
+> Founder at VM Nebula (https://vmnebula.com) · Applied AI & Cloud Architect · Open Source Contributor to Redis, fsspec, AsyncSSH & Agno.
 
 ## Flagship Product — VM Nebula (https://vmnebula.com)
 - The agent cloud with a spending limit: a dedicated cloud computer for autonomous AI agents.
@@ -7,15 +7,16 @@
 
 ## Selected Products & Ventures
 - VM Nebula: https://vmnebula.com
+- Sarkit (1st Place National Winner, Technology Innovation 2026): https://sarkit.pk
 - NayaCloud: https://nayacloud.com
-- Sarkit: https://sarkit.vmnebula.com
 - Bulk AI Studio: https://workspace.google.com/marketplace/app/bulk_ai_studio/323643388682
 - Vorlagen Direkt: https://vorlagen-direkt.com
 
 ## Open Source
-- Official merged contributor to Redis (redis/redis-py) and active contributor across the Python AI and async ecosystem.
+- Contributor to Redis (redis/redis-py), fsspec (filesystem_spec), AsyncSSH, Agno, AnyIO, NATS.py, RQ, APScheduler, and Lastbook.
 
 ## Contact
-- Email: muhammad.osama@vmnebula.com
-- LinkedIn: https://www.linkedin.com/in/muhammad-osama-amin/
+- Web: https://vmnebula.com
+- Email: contact@vmnebula.com
 - GitHub: https://github.com/Vmnebula
+- LinkedIn: https://www.linkedin.com/in/muhammad-osama-amin/

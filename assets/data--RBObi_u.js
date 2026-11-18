@@ -3,29 +3,29 @@
   first:`Muhammad`,
   role:`Founder & AI Cloud Architect`,
   tagline:`Founder at VM Nebula · Open Source Contributor`,
-  blurb:`I turn complex cloud infrastructure into practical products—building dedicated cloud computers and spend guardrails for autonomous AI agents at VM Nebula.`,
-  email:`muhammad.osama@vmnebula.com`,
+  blurb:`I architected and built VM Nebula—the managed cloud for autonomous AI agents with built-in spend guardrails—alongside voice-first enterprise systems and upstream open-source infrastructure.`,
+  email:`contact@vmnebula.com`,
   phone:``,
   phoneAlt:``,
-  location:`Dubai, UAE · Islamabad, PK`,
-  timeZone:`Asia/Karachi`,
+  location:`Global · Remote`,
+  timeZone:`UTC`,
   careerStart:`2020-01-01T00:00:00Z`,
-  resume:`https://vmnebula.github.io/osama-amin-portfolio/Muhammad_Osama_Amin_CV_Tech.pdf`,
+  resume:`https://vmnebula.com`,
   github:`https://github.com/Vmnebula`,
   linkedin:`https://www.linkedin.com/in/muhammad-osama-amin/`
 },
 t=[
-  {text:`hey`,label:`English`},
-  {text:`salam`,label:`Urdu / Pashto`},
+  {text:`hello`,label:`English`},
+  {text:`salam`,label:`Urdu`},
   {text:`marhaba`,label:`Arabic`},
   {text:`servus`,label:`German`}
 ],
 n=[
-  `Building [VM Nebula](https://vmnebula.com) — the 1-click cloud computer for autonomous AI agents with built-in spending limits — and contributing to open-source projects including [Redis](https://github.com/redis/redis-py) and [CrewAI](https://github.com/crewAIInc/crewAI).`
+  `Building [VM Nebula](https://vmnebula.com) — the 1-click cloud computer for autonomous AI agents with built-in spending limits — and contributing upstream patches to [Redis](https://github.com/redis/redis-py), [fsspec](https://github.com/fsspec/filesystem_spec), [AsyncSSH](https://github.com/ronf/asyncssh), [Agno](https://github.com/agno-agi/agno), and [AnyIO](https://github.com/agronholm/anyio).`
 ],
 r=[
-  {name:`Python`,slug:`python`,note:`daily driver`},
-  {name:`TypeScript`,slug:`typescript`,note:`the other daily driver`},
+  {name:`Python`,slug:`python`,note:`core systems`},
+  {name:`TypeScript`,slug:`typescript`,note:`web & cloud`},
   {name:`FastAPI`,slug:`fastapi`,note:`production APIs`},
   {name:`React`,slug:`react`,note:`web interfaces`},
   {name:`Next.js`,slug:`nextdotjs`,note:`product portals`},
@@ -53,11 +53,11 @@ i=[
     clients:[
       {
         name:`Sarkit`,
-        href:`https://sarkit.vmnebula.com`,
+        href:`https://sarkit.pk`,
         logo:`/osama-amin-portfolio/img/logos/atomicwork.png`,
-        summary:`Voice-first, WhatsApp-native commerce software converting local-language speech and supplier invoices into structured ledger records.`,
+        summary:`National award-winning Voice AI Point-of-Sale and retail operating system converting natural speech and supplier invoices into structured ledger records.`,
         impact:[
-          {label:`Voice to Ledger`,text:`Turns natural spoken sales and handwritten supplier bills into structured inventory and accounting entries.`}
+          {label:`National Winner (Technology Innovation)`,text:`Selected 1st Place nationwide in Technology Innovation (2026); featured in Arab News and national broadcast media.`}
         ]
       },
       {
@@ -75,34 +75,34 @@ i=[
     company:`Open Source Contributions`,
     href:`https://github.com/Vmnebula`,
     logo:`/osama-amin-portfolio/img/logos/think41.svg`,
-    title:`Open Source Contributor (Redis, CrewAI & Python Ecosystem)`,
+    title:`Open Source Contributor (Redis, fsspec, AsyncSSH, Agno & AnyIO)`,
     period:`2025 - Present`,
     location:`Global Open Source`,
-    summary:`Contributing reliability, async networking, and concurrency improvements to foundational open-source data and AI libraries.`,
+    summary:`Contributing async networking, filesystem integrity, and concurrency fixes to foundational open-source Python and AI libraries.`,
     impact:[
-      {label:`Redis (redis-py)`,stat:`Merged contributor`,text:`Resolved async cluster transaction and event-loop connection reliability issues in the official Redis Python client.`},
-      {label:`AI & Async Ecosystem`,stat:`Core libraries`,text:`Contributed concurrency, caching, and WebSocket reliability improvements across open-source Python frameworks.`}
+      {label:`Redis, fsspec & AsyncSSH`,stat:`Merged patches`,text:`Resolved async cluster connection lifecycle, filesystem wrapper delegation, and SSH authentication concurrency bugs.`},
+      {label:`AI & Async Ecosystem`,stat:`Core libraries`,text:`Active contributor across Agno, AnyIO, NATS.py, RQ, APScheduler, and Lastbook.`}
     ]
   },
   {
-    company:`NayaCloud & Amin Technologies`,
+    company:`NayaCloud Technologies`,
     href:`https://nayacloud.com`,
     logo:`/osama-amin-portfolio/img/logos/nokia.svg`,
-    title:`Founder & Cloud Operations Lead`,
+    title:`Founder & Cloud Architect`,
     period:`2020 - Present`,
-    location:`UAE · UK · International`,
-    summary:`Hands-on cloud architecture, platform engineering, and full-stack product delivery for clients across the Gulf, UK, US, and international markets.`,
+    location:`nayacloud.com`,
+    summary:`Enterprise cloud architecture, platform engineering, and full-stack product delivery across multi-cloud environments.`,
     impact:[
-      {label:`Cloud & Platform Engineering`,stat:`End-to-end delivery`,text:`Architected multi-cloud infrastructure, enterprise virtual desktops, networking, backup systems, and automated CI/CD.`},
-      {label:`Recognition & Ecosystem`,stat:`Top 30 Finalist`,text:`Shortlisted among the Top 30 finalists of the 13th Wafi Tameer Awards 2026; NIC Peshawar & Orbit Startups alumni; featured on BBC Pashto.`}
+      {label:`Cloud & Platform Engineering`,stat:`End-to-end delivery`,text:`Architected multi-cloud infrastructure, isolated virtual desktops, zero-trust networking, and automated CI/CD pipelines.`},
+      {label:`Recognition & Ecosystem`,stat:`National Winner`,text:`1st Place Winner in Technology Innovation (2026); Orbit Startups (SOSV) ecosystem.`}
     ]
   }
 ],
 a=[
   {label:`Flagship`,value:`VM Nebula`,detail:`A computer for your AI agent`,more:`1-click cloud with hard spending limits`,href:`https://vmnebula.com`},
-  {label:`Open Source`,value:`Redis Contributor`,detail:`Async cluster & systems reliability`,more:`merged contributor in core Python libraries`,href:`https://github.com/Vmnebula`},
-  {label:`Recognition`,value:`Wafi Tameer Awards`,detail:`Top 30 Finalist (2026)`,more:`NIC Peshawar & Orbit Startups alumni`},
-  {label:`Media`,value:`BBC Pashto Feature`,detail:`Cloud & AI engineering spotlight`,more:`watch the original broadcast feature`,href:`https://www.youtube.com/watch?v=TggCy1vVewI`}
+  {label:`Open Source`,value:`Redis & Python OSS`,detail:`Async cluster & systems reliability`,more:`merged contributor in Redis, fsspec, AsyncSSH & Agno`,href:`https://github.com/Vmnebula`},
+  {label:`Recognition`,value:`National Award Winner`,detail:`1st Place · Technology Innovation`,more:`selected #1 out of 700+ companies (2026)`,href:`https://sarkit.pk`},
+  {label:`Press`,value:`Arab News Feature`,detail:`Voice AI & retail innovation`,more:`featured in international & national media`,href:`https://www.arabnews.pk/pakistan/saudi-backed-wafi-energy-honors-pakistani-entrepreneurs-at-awards-show-3006278`}
 ],
 o={
   "VM Nebula":{itch:`AI agents die on laptops or cause surprise cloud bills.`,built:`Dedicated cloud VMs for AI agents with hard spending limits.`},
@@ -130,18 +130,18 @@ s=[
   },
   {
     name:`Sarkit`,
-    kind:`Retail & Applied AI`,
+    kind:`Voice AI Point of Sale`,
     year:`2026`,
     hook:`Speak your sale. It updates the ledger.`,
-    blurb:`A voice-first, WhatsApp-native retail system for merchants. Converts local-language speech and supplier invoices into structured inventory and accounting records.`,
+    blurb:`National award-winning Voice AI retail operating system. Converts natural speech and supplier invoices into structured inventory and accounting records.`,
     points:[
       `Voice-to-ledger workflows in natural local languages`,
       `Automated line-item extraction from supplier invoices`,
-      `Designed for fast everyday retail and wholesale operations`
+      `1st Place National Winner in Technology Innovation (2026)`
     ],
-    stack:[`Voice to Ledger`,`Document Vision`,`Cloud Sync`],
+    stack:[`Voice AI`,`Document Vision`,`Cloud Sync`],
     shot:`/osama-amin-portfolio/img/projects/daytrail.jpg`,
-    live:`https://sarkit.vmnebula.com`,
+    live:`https://sarkit.pk`,
     repo:`https://github.com/Vmnebula`
   },
   {
@@ -193,7 +193,7 @@ s=[
     repo:`https://github.com/Vmnebula`
   }
 ],
-c={now:`Right now.`,work:`Selected work & experience.`,stack:`Core toolkit.`,github:`Proof of work.`,off:`Highlights & recognition.`,contact:`Say hello.`,quests:`Shipped products.`},
+c={now:`Right now.`,work:`Selected work & experience.`,stack:`Core toolkit.`,github:`Proof of work.`,off:`Highlights & recognition.`,contact:`Get in touch.`,quests:`Shipped products.`},
 l=structuredClone({profile:e,greetings:t,currently:n,techStack:r,experience:i,offbeat:a,projects:s,titles:c}),
 u=()=>structuredClone(l);
 function d(e,t){let n=(e,t)=>{Array.isArray(t)&&t.length&&e.splice(0,e.length,...t)};if(t.profile&&Object.assign(e.profile,t.profile),t.titles)for(let[n,r]of Object.entries(t.titles))r&&(e.titles[n]=r);n(e.greetings,t.greetings),n(e.currently,t.currently),n(e.techStack,t.techStack),n(e.experience,t.experience),n(e.offbeat,t.offbeat),n(e.projects,t.projects)}
